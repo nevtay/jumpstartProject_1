@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/header"
-import CalcInputs from "./containers/inputsForCalculator"
+import Header from "./components/Header"
+import CalcInputs from "./containers/InputsForCalculator"
+import DisplayResults from "./containers/DisplayResults"
 
 function App() {
   return (   
@@ -12,18 +13,7 @@ function App() {
 
       <CalcInputs />
 
-      <section className="tdee-results">
-        <h2 className="tdee-results__title">Based on the input provided, your measurements are as follows: </h2>
-        <div className="tdee-resultsSubcontainer">
-          <h3 className="tdee-resultsSubcontainer__title">TDEE:</h3>
-        </div>
-        <div>
-          <h3 className="tdee-resultsSubcontainer__title">BMI:</h3>
-        </div>
-        <div>
-          <h3 className="tdee-resultsSubcontainer__title">BMR:</h3>
-        </div>
-      </section>
+      <DisplayResults />
 
     </div>
   );
