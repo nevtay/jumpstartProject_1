@@ -10,19 +10,25 @@ class InputWeight extends React.Component {
     }
 
     updateWeight = (e) => {
+        this.props.weightUpdate(e.target.value);
         this.setState({
-            weight: e.target.value
+            weight: e.target.value,
         })
-        console.log(this.state.weight)
-    }
+    };
 
 render() {
 
     return(
         <fieldset id="weight">
             <p>Enter Weight</p>
-            <label for="weight" className="tdee-inputs__label"> Weight </label>
-                <input type="number" value={this.state.weight} onChange={this.updateWeight} />
+            <label 
+            for="weight" 
+            className="tdee-inputs__label"> 
+            Weight 
+            </label>
+                <input type="number" 
+                value={this.state.weight} 
+                onChange={this.updateWeight} />
         </fieldset>
         )
     }
