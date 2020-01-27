@@ -10,9 +10,20 @@ class CalcInputs extends React.Component {
         super(props);
 
         this.state = {
-            value:'',
+            gender: '',
+            age: '',
+            height: '',
+            weight: '',
+            activityLevel: '',
         }
     }
+
+    weightUpdate = (weight) => {
+        this.setState({
+            weight: weight,
+        })
+    }
+
     render() {
         return (
             <section className="tdee-inputs">
@@ -21,10 +32,12 @@ class CalcInputs extends React.Component {
                 <InputGender />
                 <InputAge />
                 <InputHeight />
-                <InputWeight />
+                <InputWeight weightUpdate={this.weightUpdate}/>
+                <h1>Weight is {this.state.weight}</h1>
                 <InputActivityLevel />
 
                 </form>
+
             </section>
         )
     }
