@@ -28,7 +28,7 @@ class CalcInputs extends React.Component {
         return (
             <section className="tdee-inputs">
                 <form>
-                
+
                 <InputGender />
                 <h1>Gender is {this.state.weight}</h1>
 
@@ -40,7 +40,7 @@ class CalcInputs extends React.Component {
 
                 <InputWeight weightUpdate={this.weightUpdate}/>
                 <h1>Weight is {this.state.weight}</h1>
-                
+
                 <InputActivityLevel />
                 <h1>Activity level is {this.state.weight}</h1>
 
