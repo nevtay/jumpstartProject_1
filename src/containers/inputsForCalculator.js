@@ -30,11 +30,19 @@ class CalcInputs extends React.Component {
                 <form>
                 
                 <InputGender />
+                <h1>Gender is {this.state.weight}</h1>
+
                 <InputAge />
+                <h1>Age is {this.state.weight}</h1>
+
                 <InputHeight />
+                <h1>Height is {this.state.weight}</h1>
+
                 <InputWeight weightUpdate={this.weightUpdate}/>
                 <h1>Weight is {this.state.weight}</h1>
+                
                 <InputActivityLevel />
+                <h1>Activity level is {this.state.weight}</h1>
 
                 </form>
 
