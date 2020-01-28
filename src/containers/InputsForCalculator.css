@@ -1,0 +1,24 @@
+.tdee-inputs {
+    background: rgba(220, 220, 220, 1);
+    padding: 30px 20px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+fieldset {
+    border: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.revealed {
+    display: block;
+}
+
+.age-warning {
+    color: red;
+}
