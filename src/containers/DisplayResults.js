@@ -1,34 +1,39 @@
 import React from "react"
 
-class DisplayResults extends React.Component {
-    constructor(props) {
-        super(props);
-            this.state = {
-                val: '',
-            }
-        }
+const DisplayResults = ({ personalInfo }) => {
+    let { gender, age, height, weight, activityLevel } = personalInfo ;
 
-    render() {
-        return(
+    const calculateBMR = () => {
+        if ( gender === '' || age === '' || height === '' || weight === '' ) {
+            return 0;
+        }
+            let weightFactor = Number(weight) * 10;
+            let heightFactor = Number(height) * 6.25;
+            let ageFactor = Number(age) * 5;
+            let genderFactor = gender === "male" ? 5 : -161; 
+            let result = (weightFactor + heightFactor - ageFactor + genderFactor)
+        return result.toFixed(2);
+    }
+    
+    const calculateBMI = () => {
+        if ( height === '' || weight === '' ) {
+            return 0;
+        }
+            let weightFactor = Number(weight);
+            let heightInMetres = Number(height) / 100;
+            let result = weightFactor / Math.pow(heightInMetres, 2);
+        return parseInt(result);
+    }    
+    
+    
+    return(
             <section className="tdee-results">
                 
-                <h2 className="tdee-results__title">Your measurements are as follows: </h2>
-                
-                <div className="tdee-resultsSubcontainer">
-                    <h3 className="tdee-resultsSubcontainer__title">TDEE: {this.props.val}</h3>
-                </div>
-
-                <div className="tdee-resultsSubcontainer">
-                    <h3 className="tdee-resultsSubcontainer__title">BMI: {this.props.val}</h3>
-                </div>
-                
-                <div className="tdee-resultsSubcontainer">
-                    <h3 className="tdee-resultsSubcontainer__title">BMR: {this.props.val}</h3>
-                </div>
+                <h1>Hello</h1>
+                <h2>BMR: {calculateBMR()}</h2>
 
             </section>
         )
     }
-}
 
 export default DisplayResults;
