@@ -5,18 +5,36 @@ class InputGender extends React.Component {
         super(props);
 
         this.state = {
-            value:'',
+            gender: '',
         }
+    }
+
+    genderOfUser = (e) => {
+        console.log(e.target.value);
+        this.props.genderUpdate(e.target.value);
+        this.setState({
+            gender: e.target.value,
+        })
     }
 
 render() {
     return(
         <fieldset id="gender">
         <p>Select Gender</p>
-            <input type="radio" name="gender" id="male" value="male" />
+            <input 
+            type="radio" 
+            name="gender" 
+            id="male" 
+            onChange={this.genderOfUser} 
+            value="male" />
                 <label className="tdee-inputs__label" for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female" />
-                <label className="tdee-inputs__label" for="female">Female</label>
+            <input 
+            type="radio" 
+            name="gender" 
+            id="female" 
+            onChange={this.genderOfUser} 
+            value="female" />
+                <label className="tdee-inputs__label"  for="female">Female</label>
         </fieldset>
         )
     }
