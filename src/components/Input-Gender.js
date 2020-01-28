@@ -23,7 +23,7 @@ render() {
             <input 
             type="radio" 
             name="gender" 
-            id="male" y
+            id="male"
             onChange={this.genderOfUser} 
             value="male" />
                 <label className="tdee-inputs__label" for="male">Male</label>
