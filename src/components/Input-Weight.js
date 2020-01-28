@@ -20,7 +20,6 @@ render() {
 
     return(
         <fieldset id="weight">
-            <p>Enter Weight</p>
             <label 
             for="weight" 
             className="tdee-inputs__label"> 
