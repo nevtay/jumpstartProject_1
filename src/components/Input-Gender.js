@@ -10,7 +10,6 @@ class InputGender extends React.Component {
     }
 
     genderOfUser = (e) => {
-        console.log(e.target.value);
         this.props.genderUpdate(e.target.value);
         this.setState({
             gender: e.target.value,
@@ -24,7 +23,7 @@ render() {
             <input 
             type="radio" 
             name="gender" 
-            id="male" 
+            id="male" y
             onChange={this.genderOfUser} 
             value="male" />
                 <label className="tdee-inputs__label" for="male">Male</label>
