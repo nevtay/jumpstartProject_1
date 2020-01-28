@@ -1,5 +1,6 @@
 import React from "react"
 
+
 class InputWeight extends React.Component {
     constructor(props) {
         super(props);
@@ -20,14 +21,17 @@ render() {
 
     return(
         <fieldset id="weight">
+           
             <label 
             for="weight" 
             className="tdee-inputs__label"> 
-            Weight 
+            Weight (kg) &nbsp;
             </label>
+
                 <input type="number" 
                 value={this.state.weight} 
                 onChange={this.updateWeight} />
+
         </fieldset>
         )
     }
