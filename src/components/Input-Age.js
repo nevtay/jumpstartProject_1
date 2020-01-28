@@ -20,16 +20,20 @@ render() {
 
     return(
         <fieldset id="age">
+            
             <label 
             for="age" 
             className="tdee-inputs__label" 
-            id="inputs-age"> Age </label>
+            id="inputs-age"> 
+            Age </label>
+
                 <input 
                 type="number" 
                 value={this.state.age} 
                 min="0"
                 max="130"
                 onChange={this.updateAge} />
+                
         </fieldset>
         )
     }
