@@ -10,10 +10,11 @@ class InputHeight extends React.Component {
     }
 
     updateHeight = (e) => {
+        this.props.heightUpdate(e.target.value);
         this.setState({
             height: e.target.value
         })
-        console.log(this.state.height)
+        console.log(this.props);
     }
 
 render() {
