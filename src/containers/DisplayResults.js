@@ -6,8 +6,7 @@ class DisplayResults extends React.Component {
             this.state = {
                 val: '',
             }
-
-    }
+        }
 
     render() {
         return(
