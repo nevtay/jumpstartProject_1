@@ -5,6 +5,7 @@ import InputHeight from "../components/Input-Height"
 import InputWeight from "../components/Input-Weight"
 import InputActivityLevel from "../components/Input-ActivityLvl"
 import "./InputsForCalculator.css"
+import DisplayResults from "./DisplayResults"
 
 class CalcInputs extends React.Component {
     constructor(props) {
@@ -51,10 +52,28 @@ class CalcInputs extends React.Component {
 
     render() {
         
-    const calculateBMR = () => {
-        let { gender, age, height, weight, activityLevel } = this.state;
-        console.log(gender, age, height, weight, activityLevel);
-    }
+    let { gender = '', age = 0, height = 0, weight = 0 } = this.state;
+
+    // const calculateBMR = () => {
+    //     if ( gender === '' || age === '' || height === '' || weight === '' ) {
+    //         return 0;
+    //     }
+    //         let weightFactor = Number(weight) * 10;
+    //         let heightFactor = Number(height) * 6.25;
+    //         let ageFactor = Number(age) * 5;
+    //         let genderFactor = gender === "male" ? 5 : -161; 
+    //         let result = (weightFactor + heightFactor - ageFactor + genderFactor)
+    //     return result.toFixed(2);
+    // }
+    // const calculateBMI = () => {
+    //     if ( height === '' || weight === '' ) {
+    //         return 0;
+    //     }
+    //         let weightFactor = Number(weight);
+    //         let heightInMetres = Number(height) / 100;
+    //         let result = weightFactor / Math.pow(heightInMetres, 2);
+    //     return parseInt(result);
+    // }
 
     const ageLimit = age => {
         age = Number(age);
@@ -73,12 +92,13 @@ class CalcInputs extends React.Component {
         return (
             
             <section className="tdee-container">
+                
                 <form className="tdee-inputs">
 
                     <InputGender genderUpdate={this.genderUpdate} />
 
                     <InputAge ageUpdate={this.ageUpdate} />
-                        <span className={this.state.age > 130 ? "revealed" : "hidden"}>Age </span>
+                        <span className={this.state.age > 130 ? "age-warning" : "hidden"}>Age limit exceeded.</span>
 
                     <InputHeight heightUpdate={this.heightUpdate} />
 
@@ -86,28 +106,12 @@ class CalcInputs extends React.Component {
 
                     <InputActivityLevel activityLevelUpdate={this.activityLevelUpdate} />
 
+                    <p>Note: For BMR, fill in all fields to see your results!</p>
+
                 </form>
 
-            <section className="tdee-results">
-                <h1>
-                    Gender is 
-                    { this.state.gender === '' ? " UNKNOWN " : ` ${this.state.gender} `}
-                    </h1>
-                    <h1>
-                        { ageLimit(this.state.age) } 
-                    </h1>
-                    <h1>
-                        Height is 
-                        { this.state.height === '' ? ` 0 ` : ` ${this.state.height} ` }cm
-                        </h1>
-                    <h1>
-                        Weight is 
-                        { this.state.weight === '' ? ` 0 ` : ` ${this.state.weight} ` }kg
-                        </h1>
-                    <h1>Activity level is { this.state.activityLevel === '' ? " UNKNOWN " : ` ${this.state.activityLevel.toUpperCase()} ` }</h1>
-            </section>
-                {calculateBMR()};
-            
+                <DisplayResults personalInfo={ {...this.state} } /> 
+
             </section>
         )
     }
