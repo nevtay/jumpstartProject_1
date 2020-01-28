@@ -18,6 +18,24 @@ class CalcInputs extends React.Component {
         }
     }
 
+    genderUpdate = (gender) => {
+        this.setState({
+            gender: gender,
+        })
+    }
+
+    ageUpdate = (age) => {
+        this.setState({
+            age: age,
+        })
+    }
+
+    heightUpdate = (height) => {
+        this.setState({
+            height: height,
+        })
+    }
+
     weightUpdate = (weight) => {
         this.setState({
             weight: weight,
@@ -27,19 +45,19 @@ class CalcInputs extends React.Component {
     render() {
         return (
             <section className="tdee-inputs">
-                <form>
+                <form onChange={console.log(this.state)}>
 
-                <InputGender />
-                <h1>Gender is {this.state.weight}</h1>
+                <InputGender genderUpdate={this.genderUpdate} />
+                <h1>Gender is {this.state.gender}</h1>
 
-                <InputAge />
-                <h1>Age is {this.state.weight}</h1>
+                <InputAge ageUpdate={this.ageUpdate} />
+                <h1>Age is {this.state.age} years old</h1>
 
-                <InputHeight />
-                <h1>Height is {this.state.weight}</h1>
+                <InputHeight heightUpdate={this.heightUpdate} />
+                <h1>Height is {this.state.height}cm</h1>
 
-                <InputWeight weightUpdate={this.weightUpdate}/>
-                <h1>Weight is {this.state.weight}</h1>
+                <InputWeight weightUpdate={this.weightUpdate} />
+                <h1>Weight is {this.state.weight}kg</h1>
 
                 <InputActivityLevel />
                 <h1>Activity level is {this.state.weight}</h1>
