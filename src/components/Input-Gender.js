@@ -19,7 +19,9 @@ class InputGender extends React.Component {
 render() {
     return(
         <fieldset id="gender">
-        <p>Select Gender</p>
+
+        <p>Select Biological Gender</p>
+            
             <input 
             type="radio" 
             name="gender" 
@@ -27,6 +29,7 @@ render() {
             onChange={this.genderOfUser} 
             value="male" />
                 <label className="tdee-inputs__label" for="male">Male</label>
+            
             <input 
             type="radio" 
             name="gender" 
@@ -34,6 +37,7 @@ render() {
             onChange={this.genderOfUser} 
             value="female" />
                 <label className="tdee-inputs__label"  for="female">Female</label>
+
         </fieldset>
         )
     }
