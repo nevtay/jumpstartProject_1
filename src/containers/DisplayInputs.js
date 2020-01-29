@@ -52,22 +52,6 @@ class CalcInputs extends React.Component {
 
     render() {
         
-    // let { gender = '', age = 0, height = 0, weight = 0 } = this.state;
-
-    const ageLimit = age => {
-        age = Number(age);
-        const maxAge = 130;
-        if (age === 0) {
-            return ` 0 years old.`;
-        }
-        if (age < 0) {
-            return ` Error: Negative value detected.`
-        }
-        if (age > maxAge) {
-            return ``
-        }
-        return Math.round(age);
-    }
         return (
             
             <section className="tdee-container">
@@ -77,7 +61,6 @@ class CalcInputs extends React.Component {
                     <InputGender genderUpdate={this.genderUpdate} />
 
                     <InputAge ageUpdate={this.ageUpdate} />
-                        <span className={this.state.age > 130 ? "age-warning" : "hidden"}>Age limit exceeded.</span>
 
                     <InputHeight heightUpdate={this.heightUpdate} />
 
@@ -89,7 +72,7 @@ class CalcInputs extends React.Component {
 
                 </form>
 
-                <DisplayResults personalInfo={ {...this.state} } /> 
+                <DisplayResults personalInfo={{ ...this.state }} /> 
 
             </section>
         )
