@@ -6,6 +6,7 @@ class InputAge extends React.Component {
 
         this.state = {
             age: '',
+            maxLength: 3,
         }
     }
 
@@ -24,15 +25,17 @@ render() {
             <label 
             for="age" 
             className="tdee-inputs__label" 
-            id="inputs-age"> 
-            Age </label>
+            id="inputs-age"
+            > 
+            Age 
+            </label>
 
-                <input 
-                type="number" 
-                value={this.state.age} 
-                min="0"
-                max="130"
-                onChange={this.updateAge} />
+            <input 
+            type="number" 
+            value={this.state.age} 
+            min="0"
+            max="130"
+            onChange={this.updateAge} />
                 
         </fieldset>
         )
