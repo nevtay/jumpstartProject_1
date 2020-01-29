@@ -11,6 +11,10 @@ class InputWeight extends React.Component {
     }
 
     updateWeight = (e) => {
+        const maxInputLength = 4;
+        if (e.target.value.length > maxInputLength) {
+            return;
+        }
         this.props.weightUpdate(e.target.value);
         this.setState({
             weight: e.target.value,
