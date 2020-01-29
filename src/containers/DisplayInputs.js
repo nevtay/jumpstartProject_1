@@ -68,10 +68,27 @@ class CalcInputs extends React.Component {
 
                     <InputActivityLevel activityLevelUpdate={this.activityLevelUpdate} />
 
-                    <h2>Instructions!</h2>
-                        <li>BMI requires height and weight</li>
-                        <li>BMR requires height, weight, age, and gender</li>
-                        <li>TDEE requires all inputs to be filled and an option picked from the dropdown box.</li>
+                    <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
+
+                    <div style={{width: "45%"}}>
+                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                    <h3><strong>Instructions!</strong></h3>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMI requires height and weight</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMR requires height, weight, age, and gender</li>
+                        <li style={{listStyleType: "square", margin:"0",}}>TDEE requires all inputs to be filled and an option picked from the activity level box.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style={{width: "45%"}}>
+                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                        <h3><strong>Definitions!</strong></h3>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMI: Body Mass Index</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMR: Basal Metabolic Rate</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>TDEE: Total Daily Energy Expenditure.</li>
+                    </ul>
+                    </div>
+
+                    </div>
 
                 </form>
 
