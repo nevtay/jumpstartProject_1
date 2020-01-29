@@ -25,14 +25,15 @@ render() {
 
                 <select 
                 className="tdee-inputs__label tdee-input__activityLevel" 
+                style={{width: "20%"}} 
                 onChange={this.updateActivityLevel}>
                     
                     <option value="none" selected disabled hidden>Choose...</option>
-                    <option value="1.2">Sedentary</option>
-                    <option value="1.375">Lightly Active</option>
-                    <option value="1.55">Moderately Active</option>
-                    <option value="1.725">Very Active</option>
-                    <option value="1.9">Extremely Active</option>
+                    <option value="1.2">Sedentary (little to no exercise)</option>
+                    <option value="1.375">Lightly Active (exercise 1-3 days a week)</option>
+                    <option value="1.55">Moderately Active (exercise 4-5 days a week)</option>
+                    <option value="1.725">Very Active (exercise 6 days a week)</option>
+                    <option value="1.9">Extremely Active (professional athlete/manual laborer)</option>
                     
                 </select>
 
