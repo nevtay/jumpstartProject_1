@@ -35,9 +35,9 @@ const DisplayResults = ({ personalInfo }) => {
         <section className="tdee-results">
             
             <h1>Results</h1>
-            <h2>BMR: {calculateBMR()}</h2>
+            <h2>BMR: {calculateBMR()} <span>calories per day</span></h2>
             <h2>BMI: {calculateBMI()}</h2>
-            <h2>TDEE: {Math.floor(calculateTDEE())}</h2>
+            <h2>TDEE: {Math.floor(calculateTDEE())} <span>calories per day</span></h2>
 
         </section>
         )
