@@ -65,6 +65,9 @@ class CalcInputs extends React.Component {
                     <InputHeight heightUpdate={this.heightUpdate} />
 
                     <InputWeight weightUpdate={this.weightUpdate} />
+                    <span>{(this.state.weight >= 100 && this.state.weight < 150) ? 'EAT A SALAD' : '' }</span>
+                    <span>{(this.state.weight >= 150 && this.state.weight < 200) ? 'DO YOU NEED TO TALK TO SOMEONE' : '' }</span>
+                    <span>{(this.state.weight >= 200) ? "YOUR BONES MUST BE VERY BIG" : '' }</span>
 
                     <InputActivityLevel activityLevelUpdate={this.activityLevelUpdate} />
 
