@@ -11,7 +11,7 @@ const DisplayResults = ({ personalInfo }) => {
             let heightFactor = Number(height) * 6.25;
             let ageFactor = Number(age) * 5;
             let genderFactor = gender === "male" ? 5 : -161; 
-            let result = (weightFactor + heightFactor - ageFactor + genderFactor)
+            let result = weightFactor + heightFactor - ageFactor + genderFactor
         return result.toFixed(2);
     }
     
@@ -21,18 +21,19 @@ const DisplayResults = ({ personalInfo }) => {
         }
             let weightFactor = Number(weight);
             let heightInMetres = Number(height) / 100;
-            let result = weightFactor / Math.pow(heightInMetres, 2);
-        return parseInt(result);
+            let result = weightFactor / (Math.pow(heightInMetres, 2));
+        return result.toFixed(2);
     }    
     
     
     return(
-            <section className="tdee-results">
-                
-                <h1>Hello</h1>
-                <h2>BMR: {calculateBMR()}</h2>
+        <section className="tdee-results">
+            
+            <h1>Hello</h1>
+            <h2>BMR: {calculateBMR()}</h2>
+            <h2>BMI: {calculateBMI()}</h2>
 
-            </section>
+        </section>
         )
     }
 
