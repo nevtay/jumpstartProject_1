@@ -10,6 +10,10 @@ class InputHeight extends React.Component {
     }
 
     updateHeight = (e) => {
+        const maxInputLength = 3;
+        if (e.target.value.length > maxInputLength) {
+            return;
+        }
         this.props.heightUpdate(e.target.value);
         this.setState({
             height: e.target.value
