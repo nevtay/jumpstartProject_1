@@ -51,7 +51,7 @@ class CalcInputs extends React.Component {
     }
 
     render() {
-        
+
         return (
             
             <section className="tdee-container">
@@ -68,7 +68,10 @@ class CalcInputs extends React.Component {
 
                     <InputActivityLevel activityLevelUpdate={this.activityLevelUpdate} />
 
-                    <p>Note: For BMR, fill in all fields to see your results!</p>
+                    <h2>Instructions!</h2>
+                        <li>BMI requires height and weight</li>
+                        <li>BMR requires height, weight, age, and gender</li>
+                        <li>TDEE requires all inputs to be filled and an option picked from the dropdown box.</li>
 
                 </form>
 
