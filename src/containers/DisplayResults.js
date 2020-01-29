@@ -23,15 +23,21 @@ const DisplayResults = ({ personalInfo }) => {
             let heightInMetres = Number(height) / 100;
             let result = weightFactor / (Math.pow(heightInMetres, 2));
         return result.toFixed(2);
-    }    
+    }
+    
+    const calculateTDEE = () => {
+        let BMR = calculateBMR();
+        return BMR * activityLevel;
+    }
     
     
     return(
         <section className="tdee-results">
             
-            <h1>Hello</h1>
+            <h1>Results</h1>
             <h2>BMR: {calculateBMR()}</h2>
             <h2>BMI: {calculateBMI()}</h2>
+            <h2>TDEE: {Math.floor(calculateTDEE())}</h2>
 
         </section>
         )
