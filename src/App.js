@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/Header"
-import CalcInputs from "./containers/InputsForCalculator"
+import DisplayInputs from "./containers/DisplayInputs"
 
 function App() {
   return (   
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
 
       <Header />      
-      <CalcInputs />
+      <DisplayInputs />
 
     </div>
   );
