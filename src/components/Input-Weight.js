@@ -12,10 +12,8 @@ class InputWeight extends React.Component {
     }
 
     inputsToIgnore = (e) => {
-        const maxInputLength = 3;
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 2) {
             e.preventDefault();
-            return;
         } 
     }
 
