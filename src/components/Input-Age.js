@@ -29,7 +29,7 @@ render() {
         <fieldset id="age">
             
             <label 
-            for="age" 
+            htmlFor="age" 
             className="tdee-inputs__label" 
             id="inputs-age"> 
             Age (max age: 130)
@@ -45,8 +45,6 @@ render() {
             maxLength="3"
             onChange={(e) => this.updateAge(e)}
             onKeyPress={(e) => this.updateAge(e)} />
-
-            {console.log(this.props)}
                 
         </fieldset>
         )
