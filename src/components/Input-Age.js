@@ -11,13 +11,13 @@ class InputAge extends React.Component {
 
     updateAge = (e) => {
         const maxInputLength = 3;
-        if (e.charCode === 46 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
             e.preventDefault();
         } 
         if (e.target.value > 130) {
             e.target.value = "130";
         } 
-            this.props.ageUpdate(e.target.value);
+            this.props.setAge(e.target.value);
             this.setState({
                 age: e.target.value,
             })
@@ -45,6 +45,8 @@ render() {
             maxLength="3"
             onChange={(e) => this.updateAge(e)}
             onKeyPress={(e) => this.updateAge(e)} />
+
+            {console.log(this.props)}
                 
         </fieldset>
         )
