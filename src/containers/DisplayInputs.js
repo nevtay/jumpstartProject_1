@@ -14,7 +14,7 @@ class DisplayInputs extends React.Component {
 
         this.state = {
             gender: '',
-            age: '',
+            age: 0,
             heightInCm: 0,
             heightInFeet: 0,
             heightInInches: 0,
@@ -58,23 +58,25 @@ class DisplayInputs extends React.Component {
     setMeasuringUnit = unitType => {
         if (this.state.unitType === 'metric') {
             this.setState({
-                unitType: 'imperial',
+                age: 0,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
                 weightInKg: 0,
-                weightInLbs: 0
+                weightInLbs: 0,
+                unitType: 'imperial'
                 
             })
         } 
         if (this.state.unitType === '' || this.state.unitType === 'imperial') {
             this.setState({
-                unitType: 'metric',
+                age: 0,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
                 weightInKg: 0,
-                weightInLbs: 0
+                weightInLbs: 0,
+                unitType: 'metric'
             })   
         }
     }
