@@ -10,12 +10,12 @@ class DisplayResults extends React.Component {
     }
 
     render() {
-        
+
         let { gender, age, heightInCm, heightInFeet, heightInInches, weightInKg, weightInLbs, activityLevel } = this.props.personalInfo;
 
         
         const calculateBMI = () => {
-            if ( heightInCm === 0 || weightInKg === 0 ) {
+            if ( Boolean(heightInCm) === false || Boolean(weightInKg) === false ) {
                 return 0;
             }
             let weightFactor = Number(weightInKg);
@@ -25,7 +25,7 @@ class DisplayResults extends React.Component {
         }
         
         const calculateBMR = () => {
-            if ( age === 0 || gender === '' || age === '' || heightInCm === 0 || weightInKg === 0 ) {
+            if ( Boolean(age) === false || Boolean(gender) === false  || Boolean(heightInCm) === false || Boolean(weightInKg) === false ) {
                 return 0;
             }
                 let weightFactor = Number(weightInKg) * 10;
