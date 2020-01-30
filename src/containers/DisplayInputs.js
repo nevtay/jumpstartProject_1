@@ -13,7 +13,6 @@ class DisplayInputs extends React.Component {
         super(props);
 
         this.state = {
-            gender: '',
             age: 0,
             heightInCm: 0,
             heightInFeet: 0,
@@ -55,7 +54,7 @@ class DisplayInputs extends React.Component {
         })
     }
 
-    setMeasuringUnit = unitType => {
+    setMeasuringUnit = () => {
         if (this.state.unitType === 'metric') {
             this.setState({
                 age: 0,
@@ -67,8 +66,8 @@ class DisplayInputs extends React.Component {
                 unitType: 'imperial'
                 
             })
-        } 
-        if (this.state.unitType === '' || this.state.unitType === 'imperial') {
+        } else {
+        if (this.state.unitType === 'imperial') {
             this.setState({
                 age: 0,
                 heightInCm: 0,
@@ -79,6 +78,19 @@ class DisplayInputs extends React.Component {
                 unitType: 'metric'
             })   
         }
+    }
+}
+    
+    resetInputFields = () => {
+        this.setState({
+            gender: '',
+            age: 0,
+            heightInCm: 0,
+            heightInFeet: 0,
+            heightInInches: 0,
+            weightInKg: 0,
+            weightInLbs: 0,
+        })
     }
 
     render() {
@@ -96,40 +108,48 @@ class DisplayInputs extends React.Component {
                 
                     <form className="tdee-inputs">
                 
-                    <ToggleSwitch unitType={this.setMeasuringUnit} />
-                    <p>CURRENT UNIT TYPE: {this.state.unitType}</p>
+                        <ToggleSwitch unitType={this.setMeasuringUnit} />
+                        <p>CURRENT UNIT TYPE: {this.state.unitType}</p>
 
-                    <InputGender setGender={this.setGender} />
+                        <InputGender setGender={this.setGender} />
 
-                    <InputAge setAge={this.setAge} />
+                        <InputAge setAge={this.setAge} />
 
-                    <InputHeight setHeightInCm={this.setHeightInCm} setMeasuringUnit={this.state.unitType} />
+                        <InputHeight setHeightInCm={this.setHeightInCm} setMeasuringUnit={this.state.unitType} />
 
-                    <InputWeight setWeightInKg={this.setWeightInKg} setMeasuringUnit={this.state.unitType} />
+                        <InputWeight setWeightInKg={this.setWeightInKg} setMeasuringUnit={this.state.unitType} />
 
-                    <InputActivityLevel setActivityLevel={this.setActivityLevel} />
+                        <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 
-                    <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
+                        <input 
+                        style={{width: "150px", margin: 'auto'}} 
+                        type="reset"
+                        value="Reset All Fields"
+                        onClick={this.resetInputFields}
+                        />
 
-                    <div style={{width: "45%"}}>
-                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
-                    <h3><strong>Instructions!</strong></h3>
-                        <li style={{listStyleType: "square", margin:"0"}}>BMI requires height and weight</li>
-                        <li style={{listStyleType: "square", margin:"0"}}>BMR requires height, weight, age, and gender</li>
-                        <li style={{listStyleType: "square", margin:"0",}}>TDEE requires all inputs to be filled and an option picked from the activity level box.</li>
+                        
+                        <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
+
+                        <div style={{width: "45%"}}>
+                        <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                        <h3><strong>Instructions!</strong></h3>
+                            <li style={{listStyleType: "square", margin:"0"}}>BMI requires height and weight</li>
+                            <li style={{listStyleType: "square", margin:"0"}}>BMR requires height, weight, age, and gender</li>
+                            <li style={{listStyleType: "square", margin:"0",}}>TDEE requires all inputs to be filled and an option picked from the activity level box.</li>
+                            </ul>
+                        </div>
+                        
+                        <div style={{width: "45%"}}>
+                        <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                            <h3><strong>Definitions!</strong></h3>
+                            <li style={{listStyleType: "square", margin:"0"}}>BMI: Body Mass Index</li>
+                            <li style={{listStyleType: "square", margin:"0"}}>BMR: Basal Metabolic Rate</li>
+                            <li style={{listStyleType: "square", margin:"0"}}>TDEE: Total Daily Energy Expenditure.</li>
                         </ul>
-                    </div>
-                    
-                    <div style={{width: "45%"}}>
-                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
-                        <h3><strong>Definitions!</strong></h3>
-                        <li style={{listStyleType: "square", margin:"0"}}>BMI: Body Mass Index</li>
-                        <li style={{listStyleType: "square", margin:"0"}}>BMR: Basal Metabolic Rate</li>
-                        <li style={{listStyleType: "square", margin:"0"}}>TDEE: Total Daily Energy Expenditure.</li>
-                    </ul>
-                    </div>
+                        </div>
 
-                    </div>
+                        </div>
 
                 </form>
 
