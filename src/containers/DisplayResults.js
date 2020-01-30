@@ -21,7 +21,7 @@ class DisplayResults extends React.Component {
             let weightFactor = Number(weightInKg);
             let heightInMetres = Number(heightInCm) / 100;
             let result = weightFactor / (Math.pow(heightInMetres, 2));
-            return result.toFixed(2);
+            return result.toFixed(2)
         }
         
         const calculateBMR = () => {
@@ -33,13 +33,13 @@ class DisplayResults extends React.Component {
                 let ageFactor = Number(age) * 5;
                 let genderFactor = gender === "male" ? 5 : -161; 
                 let result = weightFactor + heightFactor - ageFactor + genderFactor 
-            return result.toFixed(2);
+            return result.toFixed(2)
         }
 
         const calculateTDEE = () => {
             let BMR = calculateBMR();
             let result = Math.floor(BMR * activityLevel)
-            return result;
+            return result
         }
         
            
@@ -48,10 +48,9 @@ class DisplayResults extends React.Component {
             <section className="tdee-results">
                 
                 <h1>Results</h1>
-                <h2>BMI: {calculateBMI()} </h2>
-                <h2>BMR: {calculateBMR()}  <span>calories per day</span></h2>
-                <span>TDEE: {calculateTDEE()}</span> <span>calories per day</span>
-                {console.log(this.props.personalInfo)}
+                <h2>BMI: {calculateBMI()}</h2>
+                <h2>BMR: {calculateBMR()} calories a day</h2>
+                <h2>TDEE: {calculateTDEE()} calories a day</h2>
                 
             </section>
 
