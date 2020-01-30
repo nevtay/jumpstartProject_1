@@ -15,14 +15,13 @@ class DisplayInputs extends React.Component {
         this.state = {
             gender: '',
             age: '',
-            heightInCm: '',
-            heightInFeet: '',
-            heightInInches: '',
-            weightInKg: '',
-            weightInLbs: '',
+            heightInCm: 0,
+            heightInFeet: 0,
+            heightInInches: 0,
+            weightInKg: 0,
+            weightInLbs: 0,
             activityLevel: '',
             unitType: 'metric',
-            isChecked: false,
         }
     }
 
@@ -44,9 +43,9 @@ class DisplayInputs extends React.Component {
         })
     }
 
-    setWeight = weight => {
+    setWeightInKg = weight => {
         this.setState({
-            weight: weight,
+            weightInKg: weight,
         })
     }
 
@@ -59,12 +58,23 @@ class DisplayInputs extends React.Component {
     setMeasuringUnit = unitType => {
         if (this.state.unitType === 'metric') {
             this.setState({
-                unitType: 'imperial'
+                unitType: 'imperial',
+                heightInCm: 0,
+                heightInFeet: 0,
+                heightInInches: 0,
+                weightInKg: 0,
+                weightInLbs: 0
+                
             })
         } 
         if (this.state.unitType === '' || this.state.unitType === 'imperial') {
             this.setState({
-                unitType: 'metric'
+                unitType: 'metric',
+                heightInCm: 0,
+                heightInFeet: 0,
+                heightInInches: 0,
+                weightInKg: 0,
+                weightInLbs: 0
             })   
         }
     }
@@ -93,7 +103,7 @@ class DisplayInputs extends React.Component {
 
                     <InputHeight setHeightInCm={this.setHeightInCm} setMeasuringUnit={this.state.unitType} />
 
-                    <InputWeight setWeight={this.setWeight} setMeasuringUnit={this.state.unitType} />
+                    <InputWeight setWeightInKg={this.setWeightInKg} setMeasuringUnit={this.state.unitType} />
 
                     <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 
