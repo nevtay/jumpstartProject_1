@@ -9,12 +9,6 @@ class DisplayResults extends React.Component {
         }
     }
 
-    setTdee = (e) => {
-        this.setState({
-            tdee: e,
-    })
-}
-
     render() {
         
         let { gender, age, heightInCm, heightInFeet, heightInInches, weightInKg, weightInLbs, activityLevel } = this.props.personalInfo;
@@ -31,7 +25,7 @@ class DisplayResults extends React.Component {
         }
         
         const calculateBMR = () => {
-            if ( gender === '' || age === '' || heightInCm === 0 || weightInKg === 0 ) {
+            if ( age === 0 || gender === '' || age === '' || heightInCm === 0 || weightInKg === 0 ) {
                 return 0;
             }
                 let weightFactor = Number(weightInKg) * 10;
