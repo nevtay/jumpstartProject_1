@@ -7,6 +7,7 @@ import InputActivityLevel from "../components/Input-ActivityLvl"
 import ToggleMeasuringUnits from "../components/ToggleMeasuringUnits"
 import "./InputsForCalculator.css"
 import DisplayResults from "./DisplayResults"
+import "./DisplayInputs.css"
 
 class DisplayInputs extends React.Component {
     constructor(props) {
@@ -139,6 +140,7 @@ class DisplayInputs extends React.Component {
             
             <section className="tdee-container">
                 
+                <div className="tdee-container-inputs">
                     <form className="tdee-inputs">
                 
                         <ToggleMeasuringUnits unitType={this.setMeasuringUnit} setUnitType={this.setUnitType}/>
@@ -191,8 +193,11 @@ class DisplayInputs extends React.Component {
                         {console.log(this.state)}
 
                 </form>
-
-                <DisplayResults personalInfo={{ ...this.state }} /> 
+                </div>
+                
+                <div className="tdee-container-inputResults">
+                    <DisplayResults personalInfo={{ ...this.state }} /> 
+                </div>
 
             </section>
         )
