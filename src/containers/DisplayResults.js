@@ -17,24 +17,24 @@ class DisplayResults extends React.Component {
 
     render() {
         
-        let { gender, age, heightInCm, heightInFeet, heightInInches, weight, activityLevel } = this.props.personalInfo;
+        let { gender, age, heightInCm, heightInFeet, heightInInches, weightInKg, weightInLbs, activityLevel } = this.props.personalInfo;
 
         
         const calculateBMI = () => {
-            if ( heightInCm === '' || weight === '' ) {
+            if ( heightInCm === 0 || weightInKg === 0 ) {
                 return 0;
             }
-            let weightFactor = Number(weight);
+            let weightFactor = Number(weightInKg);
             let heightInMetres = Number(heightInCm) / 100;
             let result = weightFactor / (Math.pow(heightInMetres, 2));
             return result.toFixed(2);
         }
         
         const calculateBMR = () => {
-            if ( gender === '' || age === '' || heightInCm === '' || weight === '' ) {
+            if ( gender === '' || age === '' || heightInCm === 0 || weightInKg === 0 ) {
                 return 0;
             }
-                let weightFactor = Number(weight) * 10;
+                let weightFactor = Number(weightInKg) * 10;
                 let heightFactor = Number(heightInCm) * 6.25;
                 let ageFactor = Number(age) * 5;
                 let genderFactor = gender === "male" ? 5 : -161; 
@@ -57,6 +57,7 @@ class DisplayResults extends React.Component {
                 <h2>BMI: {calculateBMI()} </h2>
                 <h2>BMR: {calculateBMR()}  <span>calories per day</span></h2>
                 <span>TDEE: {calculateTDEE()}</span> <span>calories per day</span>
+                {console.log(this.props.personalInfo)}
                 
             </section>
 
