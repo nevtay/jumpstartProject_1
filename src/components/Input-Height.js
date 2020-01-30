@@ -1,40 +1,37 @@
 import React from "react"
 
 class InputHeight extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            heightInCm: '',
-            heightInFeet: '',
-            heightInInches: '',
-        }
-    }
 
     setHeightInCm = (e) => {
         this.props.setHeightInCm(e.target.value);
-        this.setState({
-            heightInCm: 0
-        })
     }
 
     setHeightInFeet = (e) => {
         this.props.setHeightInFeet(e.target.value);
-        this.setState({
-            heightInFeet: e.target.value
-        })
     }
 
     setHeightInInches = (e) => {
         this.props.setHeightInInches(e.target.value);
-        this.setState({
-            heightInCm: e.target.value
-        })
     }
 
-    inputsToIgnore = (e) => {
+    inputsToIgnoreCm = (e) => {
         const maxInputLength = 3;
         if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
+            e.preventDefault();
+            return;
+        } 
+    }
+
+    inputsToIgnoreFeet = (e) => {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 1) {
+            e.preventDefault();
+            return;
+        } 
+    }
+
+    inputsToIgnoreInches = (e) => {
+        // const maxInputLength = 2;
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 2 || e.target.value >= 12) {
             e.preventDefault();
             return;
         } 
@@ -55,7 +52,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.setHeightInCm}
-        onKeyPress={this.inputsToIgnore}
+        onKeyPress={this.inputsToIgnoreMetric}
         placeholder="cm"
          /> 
 
@@ -66,7 +63,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.updateHeight}
-        onKeyPress={this.inputsToIgnore}
+        onKeyPress={this.inputsToIgnoreFeet}
         placeholder="ft"
         />;
 
@@ -74,7 +71,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.updateHeight}
-        onKeyPress={this.inputsToIgnore}
+        onKeyPress={this.inputsToIgnoreInches}
         placeholder="inches" 
         />
 
