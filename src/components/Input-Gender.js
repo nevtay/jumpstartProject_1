@@ -1,19 +1,9 @@
 import React from "react"
 
 class InputGender extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            gender: '',
-        }
-    }
 
     genderOfUser = (e) => {
-        this.props.genderUpdate(e.target.value);
-        this.setState({
-            gender: e.target.value,
-        })
+        this.props.setGender(e.target.value);
     }
 
 render() {
