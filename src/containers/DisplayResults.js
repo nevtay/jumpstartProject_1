@@ -17,25 +17,25 @@ class DisplayResults extends React.Component {
 
     render() {
         
-        let { gender, age, height, weight, activityLevel } = this.props.personalInfo;
+        let { gender, age, heightInCm, heightInFeet, heightInInches, weight, activityLevel } = this.props.personalInfo;
 
         
         const calculateBMI = () => {
-            if ( height === '' || weight === '' ) {
+            if ( heightInCm === '' || weight === '' ) {
                 return 0;
             }
             let weightFactor = Number(weight);
-            let heightInMetres = Number(height) / 100;
+            let heightInMetres = Number(heightInCm) / 100;
             let result = weightFactor / (Math.pow(heightInMetres, 2));
             return result.toFixed(2);
         }
         
         const calculateBMR = () => {
-            if ( gender === '' || age === '' || height === '' || weight === '' ) {
+            if ( gender === '' || age === '' || heightInCm === '' || weight === '' ) {
                 return 0;
             }
                 let weightFactor = Number(weight) * 10;
-                let heightFactor = Number(height) * 6.25;
+                let heightFactor = Number(heightInCm) * 6.25;
                 let ageFactor = Number(age) * 5;
                 let genderFactor = gender === "male" ? 5 : -161; 
                 let result = weightFactor + heightFactor - ageFactor + genderFactor 
@@ -46,7 +46,8 @@ class DisplayResults extends React.Component {
             let BMR = calculateBMR();
             let result = Math.floor(BMR * activityLevel)
             return result;
-        }    
+        }
+        
            
         return(
             
@@ -56,7 +57,6 @@ class DisplayResults extends React.Component {
                 <h2>BMI: {calculateBMI()} </h2>
                 <h2>BMR: {calculateBMR()}  <span>calories per day</span></h2>
                 <span>TDEE: {calculateTDEE()}</span> <span>calories per day</span>
-                {console.log(this.state.tdee)}
                 
             </section>
 
