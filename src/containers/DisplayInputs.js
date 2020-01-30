@@ -42,9 +42,27 @@ class DisplayInputs extends React.Component {
         })
     }
 
+    setHeightInFeet = height => {
+        this.setState({
+            heightInFeet: height,
+        })
+    }
+
+    setHeightInInches = height => {
+        this.setState({
+            heightInInches: height,
+        })
+    }
+
     setWeightInKg = weight => {
         this.setState({
             weightInKg: weight,
+        })
+    }
+
+    setWeightInLbs = weight => {
+        this.setState({
+            weightInLbs: weight,
         })
     }
 
@@ -115,9 +133,13 @@ class DisplayInputs extends React.Component {
 
                         <InputAge setAge={this.setAge} />
 
-                        <InputHeight setHeightInCm={this.setHeightInCm} setMeasuringUnit={this.state.unitType} />
+                        <InputHeight 
+                        setHeightInCm={this.setHeightInCm}
+                        setHeightInFeet={this.setHeightInFeet} 
+                        setHeightInInches={this.setHeightInInches} 
+                        setMeasuringUnit={this.state.unitType} />
 
-                        <InputWeight setWeightInKg={this.setWeightInKg} setMeasuringUnit={this.state.unitType} />
+                        <InputWeight setWeightInKg={this.setWeightInKg} setWeightInLbs={this.setWeightInLbs} setWeightInInches={this.setWeightInInches} setMeasuringUnit={this.state.unitType} />
 
                         <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 
@@ -150,6 +172,7 @@ class DisplayInputs extends React.Component {
                         </div>
 
                         </div>
+                        {console.log(this.state)}
 
                 </form>
 
