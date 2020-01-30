@@ -17,8 +17,8 @@ render() {
             name="gender" 
             id="male"
             onChange={this.genderOfUser} 
-            value="male" />
-                <label className="tdee-inputs__label" for="male">Male</label>
+            value="male" /> 
+                <label className="tdee-inputs__label" htmlFor="male">Male</label>
             
             <input 
             type="radio" 
@@ -26,7 +26,7 @@ render() {
             id="female" 
             onChange={this.genderOfUser} 
             value="female" />
-                <label className="tdee-inputs__label"  for="female">Female</label>
+                <label className="tdee-inputs__label"  htmlFor="female">Female</label>
 
         </fieldset>
         )
