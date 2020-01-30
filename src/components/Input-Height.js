@@ -11,10 +11,11 @@ class InputHeight extends React.Component {
 
     updateHeight = (e) => {
         const maxInputLength = 3;
-        if (e.target.value.length > maxInputLength) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
+            e.preventDefault();
             return;
-        }
-        this.props.heightUpdate(e.target.value);
+        } 
+        this.props.setHeight(e.target.value);
         this.setState({
             height: e.target.value
         })
@@ -34,7 +35,9 @@ render() {
                 id="inputs-height" 
                 type="number" 
                 value={this.state.height} 
-                onChange={this.updateHeight} />
+                onChange={this.updateHeight}
+                onKeyPress={this.updateHeight}
+                 />
                 
         </fieldset>
         )
