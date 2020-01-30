@@ -10,7 +10,7 @@ class InputActivityLvl extends React.Component {
     }
 
     updateActivityLevel = (e) => {
-        this.props.activityLevelUpdate(e.target.value);
+        this.props.setActivityLevel(e.target.value);
     }
 
 render() {
