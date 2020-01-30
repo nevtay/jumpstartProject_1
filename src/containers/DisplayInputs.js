@@ -4,6 +4,7 @@ import InputAge from "../components/Input-Age"
 import InputHeight from "../components/Input-Height"
 import InputWeight from "../components/Input-Weight"
 import InputActivityLevel from "../components/Input-ActivityLvl"
+import ToggleSwitch from "../components/ToggleMeasuringUnits"
 import "./InputsForCalculator.css"
 import DisplayResults from "./DisplayResults"
 
@@ -14,9 +15,14 @@ class DisplayInputs extends React.Component {
         this.state = {
             gender: '',
             age: '',
-            height: '',
-            weight: '',
+            heightInCm: '',
+            heightInFeet: '',
+            heightInInches: '',
+            weightInKg: '',
+            weightInLbs: '',
             activityLevel: '',
+            unitType: 'metric',
+            isChecked: false,
         }
     }
 
@@ -32,9 +38,9 @@ class DisplayInputs extends React.Component {
         })
     }
 
-    setHeight = height => {
+    setHeightInCm = height => {
         this.setState({
-            height: height,
+            heightInCm: height,
         })
     }
 
@@ -50,24 +56,44 @@ class DisplayInputs extends React.Component {
         })
     }
 
+    setMeasuringUnit = unitType => {
+        if (this.state.unitType === 'metric') {
+            this.setState({
+                unitType: 'imperial'
+            })
+        } 
+        if (this.state.unitType === '' || this.state.unitType === 'imperial') {
+            this.setState({
+                unitType: 'metric'
+            })   
+        }
+    }
+
     render() {
+
+        // let heightInCm;
+        // let heightInFeet;
+        // let heightInInches;
+        // let weightInKg;
+        // let weightInLbs;
+
 
         return (
             
             <section className="tdee-container">
                 
-                <form className="tdee-inputs">
+                    <form className="tdee-inputs">
+                
+                    <ToggleSwitch unitType={this.setMeasuringUnit} />
+                    <p>CURRENT UNIT TYPE: {this.state.unitType}</p>
 
                     <InputGender setGender={this.setGender} />
 
                     <InputAge setAge={this.setAge} />
 
-                    <InputHeight setHeight={this.setHeight} />
+                    <InputHeight setHeightInCm={this.setHeightInCm} setMeasuringUnit={this.state.unitType} />
 
-                    <InputWeight setWeight={this.setWeight} />
-                    <span>{(this.state.weight >= 100 && this.state.weight < 150) ? 'EAT A SALAD' : '' }</span>
-                    <span>{(this.state.weight >= 150 && this.state.weight < 200) ? 'DO YOU NEED TO TALK TO SOMEONE' : '' }</span>
-                    <span>{(this.state.weight >= 200) ? "YOUR BONES MUST BE VERY BIG" : '' }</span>
+                    <InputWeight setWeight={this.setWeight} setMeasuringUnit={this.state.unitType} />
 
                     <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 
