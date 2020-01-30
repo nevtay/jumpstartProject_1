@@ -2,14 +2,6 @@ import React from "react"
 
 
 class InputWeight extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            weightInKg: 0,
-            weightInLbs: 0,
-        }
-    }
 
     inputsToIgnore = (e) => {
         if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 3) {
@@ -19,16 +11,10 @@ class InputWeight extends React.Component {
 
     setWeightInKg = (e) => {
         this.props.setWeightInKg(e.target.value);
-        this.setState({
-            weightInKg: e.target.value,
-        })
     };
 
     setWeightInLbs = (e) => {
         this.props.setWeightInLbs(e.target.value);
-        this.setState({
-            weightInLbs: e.target.value,
-        })
     };
 
 render() {
@@ -42,7 +28,7 @@ render() {
         showLbs = '';
         showKg = <input 
         type="number" 
-        value={this.state.weight} 
+        value={this.props.weightInKg} 
         onChange={this.setWeightInKg}
         onKeyPress={this.inputsToIgnore}
          />
@@ -52,8 +38,8 @@ render() {
         showKg = '';
         showLbs = <input 
         type="number" 
-        value={this.state.weight} 
-        onChange={this.setWeightInLbs}
+        value={this.props.weightInLbs} 
+        onChange={this.props.setWeightInLbs}
         onKeyPress={this.inputsToIgnore}
         />
 
