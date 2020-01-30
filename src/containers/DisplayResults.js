@@ -1,46 +1,69 @@
 import React from "react"
 
-const DisplayResults = ({ personalInfo }) => {
-    let { gender, age, height, weight, activityLevel } = personalInfo ;
+class DisplayResults extends React.Component {
+    constructor(props) {
+        super(props);
 
-    const calculateBMR = () => {
-        if ( gender === '' || age === '' || height === '' || weight === '' ) {
-            return 0;
+        this.state = {
+            tdee: 0,
         }
-            let weightFactor = Number(weight) * 10;
-            let heightFactor = Number(height) * 6.25;
-            let ageFactor = Number(age) * 5;
-            let genderFactor = gender === "male" ? 5 : -161; 
-            let result = weightFactor + heightFactor - ageFactor + genderFactor
-        return result.toFixed(2);
     }
-    
-    const calculateBMI = () => {
-        if ( height === '' || weight === '' ) {
-            return 0;
-        }
+
+    setTdee = (e) => {
+        this.setState({
+            tdee: e,
+    })
+}
+
+    render() {
+        
+        let { gender, age, height, weight, activityLevel } = this.props.personalInfo;
+
+        
+        const calculateBMI = () => {
+            if ( height === '' || weight === '' ) {
+                return 0;
+            }
             let weightFactor = Number(weight);
             let heightInMetres = Number(height) / 100;
             let result = weightFactor / (Math.pow(heightInMetres, 2));
-        return result.toFixed(2);
-    }
-    
-    const calculateTDEE = () => {
-        let BMR = calculateBMR();
-        return BMR * activityLevel;
-    }
-    
-    
-    return(
-        <section className="tdee-results">
-            
-            <h1>Results</h1>
-            <h2>BMR: {calculateBMR()} <span>calories per day</span></h2>
-            <h2>BMI: {calculateBMI()}</h2>
-            <h2>TDEE: {Math.floor(calculateTDEE())} <span>calories per day</span></h2>
+            return result.toFixed(2);
+        }
+        
+        const calculateBMR = () => {
+            if ( gender === '' || age === '' || height === '' || weight === '' ) {
+                return 0;
+            }
+                let weightFactor = Number(weight) * 10;
+                let heightFactor = Number(height) * 6.25;
+                let ageFactor = Number(age) * 5;
+                let genderFactor = gender === "male" ? 5 : -161; 
+                let result = weightFactor + heightFactor - ageFactor + genderFactor 
+            return result.toFixed(2);
+        }
 
-        </section>
-        )
+        const calculateTDEE = () => {
+            let BMR = calculateBMR();
+            let result = Math.floor(BMR * activityLevel)
+            return result;
+        }    
+           
+        return(
+            
+            <section className="tdee-results">
+                
+                <h1>Results</h1>
+                <h2>BMI: {calculateBMI()} </h2>
+                <h2>BMR: {calculateBMR()}  <span>calories per day</span></h2>
+                <span>TDEE: {calculateTDEE()}</span> <span>calories per day</span>
+                {console.log(this.state.tdee)}
+                
+            </section>
+
+            
+            )
     }
+    
+}
 
 export default DisplayResults;
