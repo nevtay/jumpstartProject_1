@@ -32,7 +32,7 @@ class InputHeight extends React.Component {
         })
     }
 
-    inputToIgnore = (e) => {
+    inputsToIgnore = (e) => {
         const maxInputLength = 3;
         if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
             e.preventDefault();
@@ -55,7 +55,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.setHeightInCm}
-        onKeyPress={this.inputToIgnore}
+        onKeyPress={this.inputsToIgnore}
         placeholder="cm"
          /> 
 
@@ -66,7 +66,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.updateHeight}
-        onKeyPress={this.inputToIgnore}
+        onKeyPress={this.inputsToIgnore}
         placeholder="ft"
         />;
 
@@ -74,7 +74,7 @@ render() {
         type="number" 
         // value={this.state.height} 
         onChange={this.updateHeight}
-        onKeyPress={this.inputToIgnore}
+        onKeyPress={this.inputsToIgnore}
         placeholder="inches" 
         />
 
