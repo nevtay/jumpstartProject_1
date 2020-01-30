@@ -10,7 +10,7 @@ class InputWeight extends React.Component {
         }
     }
 
-    updateWeight = (e) => {
+    setWeight = (e) => {
         const maxInputLength = 4;
         if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
             e.preventDefault();
@@ -24,20 +24,40 @@ class InputWeight extends React.Component {
 
 render() {
 
+    const measuringUnitToUse = this.props.setMeasuringUnit;
+    let showKg;
+    let showLbs;
+
+    if (measuringUnitToUse === "metric") {
+        showLbs = '';
+        showKg = <input 
+        type="number" 
+        value={this.state.weight} 
+        onChange={this.setWeight}
+        onKeyPress={this.setWeight}
+         />
+    } else {
+        showKg = '';
+        showLbs = <input 
+        type="number" 
+        value={this.state.weight} 
+        onChange={this.setWeight}
+        onKeyPress={this.setWeight}
+        />
+    }
+
     return(
         <fieldset id="weight">
            
             <label 
-            for="weight" 
-            className="tdee-inputs__label"> 
-            Weight (kg) &nbsp;
+            htmlFor="weight" 
+            className="tdee-inputs__label"
+            > 
+            {this.props.setMeasuringUnit === "metric" ? "Weight (kg)" : "Weight (lbs)"}&nbsp;
             </label>
 
-                <input type="number" 
-                value={this.state.weight} 
-                onChange={this.updateWeight}
-                onKeyPress={this.updateWeight}
-                 />
+            {showKg}
+            {showLbs}
 
         </fieldset>
         )
