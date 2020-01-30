@@ -12,7 +12,7 @@ class InputWeight extends React.Component {
     }
 
     inputsToIgnore = (e) => {
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 2) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 3) {
             e.preventDefault();
         } 
     }
@@ -21,14 +21,12 @@ class InputWeight extends React.Component {
         this.props.setWeightInKg(e.target.value);
         this.setState({
             weightInKg: e.target.value,
-            weightInLbs: 0
         })
     };
 
     setWeightInLbs = (e) => {
         this.props.setWeightInLbs(e.target.value);
         this.setState({
-            weightInKg: 0,
             weightInLbs: e.target.value,
         })
     };
