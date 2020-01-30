@@ -12,10 +12,11 @@ class InputWeight extends React.Component {
 
     updateWeight = (e) => {
         const maxInputLength = 4;
-        if (e.target.value.length > maxInputLength) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > maxInputLength) {
+            e.preventDefault();
             return;
-        }
-        this.props.weightUpdate(e.target.value);
+        } 
+        this.props.setWeight(e.target.value);
         this.setState({
             weight: e.target.value,
         })
@@ -34,7 +35,9 @@ render() {
 
                 <input type="number" 
                 value={this.state.weight} 
-                onChange={this.updateWeight} />
+                onChange={this.updateWeight}
+                onKeyPress={this.updateWeight}
+                 />
 
         </fieldset>
         )
