@@ -4,7 +4,7 @@ import InputAge from "../components/Input-Age"
 import InputHeight from "../components/Input-Height"
 import InputWeight from "../components/Input-Weight"
 import InputActivityLevel from "../components/Input-ActivityLvl"
-import ToggleSwitch from "../components/ToggleMeasuringUnits"
+import ToggleMeasuringUnits from "../components/ToggleMeasuringUnits"
 import "./InputsForCalculator.css"
 import DisplayResults from "./DisplayResults"
 
@@ -14,6 +14,7 @@ class DisplayInputs extends React.Component {
 
         this.state = {
             age: 0,
+            gender: '',
             heightInCm: 0,
             heightInFeet: 0,
             heightInInches: 0,
@@ -72,42 +73,56 @@ class DisplayInputs extends React.Component {
         })
     }
 
+    // age: 0,
+    //         gender: '',
+    //         heightInCm: 0,
+    //         heightInFeet: 0,
+    //         heightInInches: 0,
+    //         weightInKg: 0,
+    //         weightInLbs: 0,
+    //         activityLevel: '',
+    //         // unitType: 'metric',z
+
     setMeasuringUnit = () => {
-        if (this.state.unitType === 'metric') {
+        if (this.state.unitType !== 'metric') {
             this.setState({
-                age: 0,
+                age: this.state.age - this.state.age,
+                gender: this.state.gender,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
                 weightInKg: 0,
                 weightInLbs: 0,
-                unitType: 'imperial'
-                
+                activityLevel: '',
+                unitType: 'metric',
             })
-        } else {
-        if (this.state.unitType === 'imperial') {
+        } 
+        if (this.state.unitType !== 'imperial') {
             this.setState({
-                age: 0,
+                age: this.state.age - this.state.age,
+                gender: this.state.gender,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
                 weightInKg: 0,
                 weightInLbs: 0,
-                unitType: 'metric'
+                activityLevel: '',
+                unitType: 'imperial',
             })   
         }
     }
-}
     
     resetInputFields = () => {
         this.setState({
-            gender: '',
+            toggleUnitsIsChecked: false,
+            gender: this.state.gender,
             age: 0,
             heightInCm: 0,
             heightInFeet: 0,
             heightInInches: 0,
             weightInKg: 0,
             weightInLbs: 0,
+            unitType: 'metric'
         })
     }
 
@@ -126,7 +141,7 @@ class DisplayInputs extends React.Component {
                 
                     <form className="tdee-inputs">
                 
-                        <ToggleSwitch unitType={this.setMeasuringUnit} />
+                        <ToggleMeasuringUnits unitType={this.setMeasuringUnit} setUnitType={this.setUnitType}/>
                         <p>CURRENT UNIT TYPE: {this.state.unitType}</p>
 
                         <InputGender setGender={this.setGender} />
@@ -148,6 +163,7 @@ class DisplayInputs extends React.Component {
                         type="reset"
                         value="Reset All Fields"
                         onClick={this.resetInputFields}
+                        onFocus={this.resetInputFields}
                         />
 
                         
@@ -181,7 +197,6 @@ class DisplayInputs extends React.Component {
             </section>
         )
     }
-    
 }
 
  export default DisplayInputs;
