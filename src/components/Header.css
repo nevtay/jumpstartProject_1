@@ -1,0 +1,13 @@
+.tdee-header {
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column wrap;
+    width: 100vw;
+    margin-top: 5vh;
+}
+
+.tdee-header__title {
+    text-align: center;
+    margin: 0;
+    font-size: 3rem;
+}
