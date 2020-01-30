@@ -19,16 +19,17 @@ render() {
         <fieldset id="activity-level">
             
             <label 
-            for="activity-level">
-                Activity Level
+            htmlFor="activity-level">
+                Activity Level &nbsp;
                 </label>
 
                 <select 
+                defaultValue={"none"}
                 className="tdee-inputs__label tdee-input__activityLevel" 
-                style={{width: "20%"}} 
+                style={{maxWidth: "200px"}} 
                 onChange={this.updateActivityLevel}>
                     
-                    <option value="none" selected disabled hidden>Choose...</option>
+                    <option value="none" disabled hidden>Choose...</option>
                     <option value="1.2">Sedentary (little to no exercise)</option>
                     <option value="1.375">Lightly Active (exercise 1-3 days a week)</option>
                     <option value="1.55">Moderately Active (exercise 4-5 days a week)</option>
