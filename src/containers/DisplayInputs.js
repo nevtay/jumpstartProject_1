@@ -7,7 +7,7 @@ import InputActivityLevel from "../components/Input-ActivityLvl"
 import "./InputsForCalculator.css"
 import DisplayResults from "./DisplayResults"
 
-class CalcInputs extends React.Component {
+class DisplayInputs extends React.Component {
     constructor(props) {
         super(props);
 
@@ -20,31 +20,31 @@ class CalcInputs extends React.Component {
         }
     }
 
-    genderUpdate = gender => {
+    setGender = gender => {
         this.setState({
             gender: gender,
         })
     }
 
-    ageUpdate = age => {
+    setAge = age => {
         this.setState({
             age: age,
         })
     }
 
-    heightUpdate = height => {
+    setHeight = height => {
         this.setState({
             height: height,
         })
     }
 
-    weightUpdate = weight => {
+    setWeight = weight => {
         this.setState({
             weight: weight,
         })
     }
 
-    activityLevelUpdate = activityLevel => {
+    setActivityLevel = activityLevel => {
         this.setState({
             activityLevel: activityLevel,
         })
@@ -58,18 +58,18 @@ class CalcInputs extends React.Component {
                 
                 <form className="tdee-inputs">
 
-                    <InputGender genderUpdate={this.genderUpdate} />
+                    <InputGender setGender={this.setGender} />
 
-                    <InputAge ageUpdate={this.ageUpdate} />
+                    <InputAge setAge={this.setAge} />
 
-                    <InputHeight heightUpdate={this.heightUpdate} />
+                    <InputHeight setHeight={this.setHeight} />
 
-                    <InputWeight weightUpdate={this.weightUpdate} />
+                    <InputWeight setWeight={this.setWeight} />
                     <span>{(this.state.weight >= 100 && this.state.weight < 150) ? 'EAT A SALAD' : '' }</span>
                     <span>{(this.state.weight >= 150 && this.state.weight < 200) ? 'DO YOU NEED TO TALK TO SOMEONE' : '' }</span>
                     <span>{(this.state.weight >= 200) ? "YOUR BONES MUST BE VERY BIG" : '' }</span>
 
-                    <InputActivityLevel activityLevelUpdate={this.activityLevelUpdate} />
+                    <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 
                     <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
 
@@ -103,4 +103,4 @@ class CalcInputs extends React.Component {
     
 }
 
- export default CalcInputs;
+ export default DisplayInputs;
