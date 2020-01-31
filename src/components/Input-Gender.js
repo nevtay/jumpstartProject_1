@@ -10,7 +10,7 @@ render() {
     return(
         <fieldset id="gender">
 
-        <p>Select Biological Gender</p>
+        <label>Select Biological Gender: </label>
             
             <input 
             type="radio" 
