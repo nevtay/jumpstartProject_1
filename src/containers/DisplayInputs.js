@@ -138,13 +138,38 @@ class DisplayInputs extends React.Component {
 
         return (
             
-            <section className="tdee-container">
-                
+            <section className="tdee-container">              
                 <div className="tdee-container-inputs">
                     <form className="tdee-inputs">
+
+                    <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
+
+                    <div style={{width: "45%"}}>
+                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                    <h3><strong>Instructions!</strong></h3>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMI requires height and weight</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMR requires height, weight, age, and gender</li>
+                        <li style={{listStyleType: "square", margin:"0",}}>TDEE requires all inputs to be filled and an option picked from the activity level box.</li>
+                        </ul>
+                    </div>
+
+                    <div style={{width: "45%"}}>
+                    <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
+                        <h3><strong>Definitions!</strong></h3>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMI: Body Mass Index</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>BMR: Basal Metabolic Rate</li>
+                        <li style={{listStyleType: "square", margin:"0"}}>TDEE: Total Daily Energy Expenditure.</li>
+                    </ul>
+                    </div>
+
+                    </div>
+                    {console.log(this.state)}
                 
-                        <ToggleMeasuringUnits unitType={this.setMeasuringUnit} setUnitType={this.setUnitType}/>
-                        <p>CURRENT UNIT TYPE: {this.state.unitType}</p>
+                        <ToggleMeasuringUnits 
+                        value={this.state.unitType}
+                        unitType={this.setMeasuringUnit} 
+                        setUnitType={this.setUnitType}/>
+                        <h3>CURRENT UNIT TYPE: {this.state.unitType.toUpperCase()}</h3>
 
                         <InputGender setGender={this.setGender} />
 
@@ -166,32 +191,8 @@ class DisplayInputs extends React.Component {
                         value="Reset All Fields"
                         onClick={this.resetInputFields}
                         onFocus={this.resetInputFields}
-                        />
-
+                        />                        
                         
-                        <div style={{display:"flex", justifyContent:"center", flexFlow:"row wrap", margin:"auto"}}>
-
-                        <div style={{width: "45%"}}>
-                        <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
-                        <h3><strong>Instructions!</strong></h3>
-                            <li style={{listStyleType: "square", margin:"0"}}>BMI requires height and weight</li>
-                            <li style={{listStyleType: "square", margin:"0"}}>BMR requires height, weight, age, and gender</li>
-                            <li style={{listStyleType: "square", margin:"0",}}>TDEE requires all inputs to be filled and an option picked from the activity level box.</li>
-                            </ul>
-                        </div>
-                        
-                        <div style={{width: "45%"}}>
-                        <ul style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-start", textAlign:"left"}}>
-                            <h3><strong>Definitions!</strong></h3>
-                            <li style={{listStyleType: "square", margin:"0"}}>BMI: Body Mass Index</li>
-                            <li style={{listStyleType: "square", margin:"0"}}>BMR: Basal Metabolic Rate</li>
-                            <li style={{listStyleType: "square", margin:"0"}}>TDEE: Total Daily Energy Expenditure.</li>
-                        </ul>
-                        </div>
-
-                        </div>
-                        {console.log(this.state)}
-
                 </form>
                 </div>
                 
