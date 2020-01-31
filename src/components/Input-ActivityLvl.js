@@ -20,7 +20,7 @@ render() {
             
             <label 
             htmlFor="activity-level">
-                Activity Level &nbsp;
+                Activity Level
                 </label>
 
                 <select 
