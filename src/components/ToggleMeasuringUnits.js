@@ -9,12 +9,11 @@ class ToggleMeasuringUnits extends React.Component {
     
     
     render() {
-        return (
-            
+        return (   
             <div className="toggle-switch">
                 <input 
                 type="reset"
-                value="Switch Units" 
+                value={this.props.value === 'metric' ? "Use Imperial Units" : "Use Metric Units"}
                 className="toggle-switch-checkbox" 
                 onClick={this.toggleMeasuringUnits}
                 onChange={this.toggleMeasuringUnits}
