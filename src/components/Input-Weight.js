@@ -31,6 +31,7 @@ render() {
         value={this.props.weightInKg} 
         onChange={this.setWeightInKg}
         onKeyPress={this.inputsToIgnore}
+        placeholder="kg"
          />
 
     } else {
@@ -39,8 +40,9 @@ render() {
         showLbs = <input 
         type="number" 
         value={this.props.weightInLbs} 
-        onChange={this.props.setWeightInLbs}
+        onChange={this.setWeightInLbs}
         onKeyPress={this.inputsToIgnore}
+        placeholder="lbs"
         />
 
     }
