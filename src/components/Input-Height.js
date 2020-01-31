@@ -52,7 +52,6 @@ render() {
         showCentimetres = <input 
         id="inputs-height" 
         type="number" 
-        // value={this.state.height} 
         onChange={this.setHeightInCm}
         onKeyPress={this.inputsToIgnoreCm}
         placeholder="cm"
