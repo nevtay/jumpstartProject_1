@@ -29,8 +29,6 @@ render() {
             Age (max age: 130)
             </label>
 
-                <br />
-
             <input 
             type="number" 
             // value={this.props.age} 
