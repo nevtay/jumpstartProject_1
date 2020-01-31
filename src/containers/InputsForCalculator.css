@@ -19,7 +19,3 @@ fieldset {
 .revealed {
     display: block;
 }
-
-.age-warning {
-    color: red;
-}
