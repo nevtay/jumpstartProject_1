@@ -107,10 +107,11 @@ class DisplayResults extends React.Component {
                 
                 <h1>Results</h1>
                 <h2>BMI: {calculateBMI()}</h2>
+                <p>{messageBMI()}</p>
                 <span>{messageBMI(calculateBMI())}</span>
                 <h2>BMR: {calculateBMR()} calories a day</h2>
                 <h2>TDEE: {calculateTDEE()} calories a day</h2>
-                {console.log(this.props.personalInfo)}
+                {/* {console.log(this.props.personalInfo)} */}
                 
             </section>
 

@@ -74,21 +74,12 @@ class DisplayInputs extends React.Component {
         })
     }
 
-    // age: 0,
-    //         gender: '',
-    //         heightInCm: 0,
-    //         heightInFeet: 0,
-    //         heightInInches: 0,
-    //         weightInKg: 0,
-    //         weightInLbs: 0,
-    //         activityLevel: '',
-    //         // unitType: 'metric',z
-
     setMeasuringUnit = () => {
         if (this.state.unitType !== 'metric') {
             this.setState({
-                age: this.state.age - this.state.age,
+                age: 0,
                 gender: this.state.gender,
+                genderIsChecked: false,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
@@ -100,8 +91,9 @@ class DisplayInputs extends React.Component {
         } 
         if (this.state.unitType !== 'imperial') {
             this.setState({
-                age: this.state.age - this.state.age,
+                age: 0,
                 gender: this.state.gender,
+                genderIsChecked: false,
                 heightInCm: 0,
                 heightInFeet: 0,
                 heightInInches: 0,
@@ -117,6 +109,7 @@ class DisplayInputs extends React.Component {
         this.setState({
             toggleUnitsIsChecked: false,
             gender: this.state.gender,
+            genderIsChecked: false,
             age: 0,
             heightInCm: 0,
             heightInFeet: 0,
@@ -163,9 +156,11 @@ class DisplayInputs extends React.Component {
                     </div>
 
                     </div>
-                    {console.log(this.state)}
+                    {/* {console.log(this.state)} */}
                 
                         <ToggleMeasuringUnits 
+                        gender={this.state.gender}
+                        genderIsChecked={this.state.genderIsChecked}
                         value={this.state.unitType}
                         unitType={this.setMeasuringUnit} 
                         setUnitType={this.setUnitType}/>

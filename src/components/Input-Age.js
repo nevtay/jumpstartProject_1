@@ -37,7 +37,7 @@ render() {
             onBlur={this.ifInputExceedsMaxAge}
             />
 
-            {console.log(this.props.age)}
+            {/* {console.log(this.props.age)} */}
 
         </fieldset>
         )
