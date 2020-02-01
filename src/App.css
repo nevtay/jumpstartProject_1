@@ -15,7 +15,7 @@ body {
   background-attachment: fixed;
   background-position-x: 0px;
   background-position-y: 0px;
-  animation: backgroundMove 150s ease-in-out infinite;
+  animation: backgroundMove 15s ease infinite;
 }
 
 @keyframes backgroundMove {
