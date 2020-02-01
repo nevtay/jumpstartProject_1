@@ -1,18 +1,18 @@
-import React from 'react';
-import './App.css';
-import Header from "./components/Header"
-import DisplayInputs from "./containers/DisplayInputs"
+import React from 'react'
+import './App.css'
+import Header from './components/Header'
+import DisplayInputs from './containers/DisplayInputs'
 
-function App() {
-  return (   
-    
+function App () {
+  return (
+
     <div className="App">
 
-      <Header />      
+      <Header />
       <DisplayInputs />
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
