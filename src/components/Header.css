@@ -1,9 +1,6 @@
 .tdee-header {
-    display: flex;
-    justify-content: flex-end;
-    flex-flow: column wrap;
     width: 100vw;
-    margin-top: 5vh;
+    margin: auto;
 }
 
 .tdee-header__title {
