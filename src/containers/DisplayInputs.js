@@ -8,6 +8,7 @@ import ToggleMeasuringUnits from "../components/ToggleMeasuringUnits"
 import "./InputsForCalculator.css"
 import DisplayResults from "./DisplayResults"
 import "./DisplayInputs.css"
+import convert from 'convert-units'
 
 class DisplayInputs extends React.Component {
     constructor(props) {
@@ -16,11 +17,11 @@ class DisplayInputs extends React.Component {
         this.state = {
             age: 0,
             gender: '',
-            heightInCm: 0,
-            heightInFeet: 0,
-            heightInInches: 0,
-            weightInKg: 0,
-            weightInLbs: 0,
+            heightInCm: '',
+            heightInFeet: '',
+            heightInInches: '',
+            weightInKg: '',
+            weightInLbs: '',
             activityLevel: '',
             unitType: 'metric',
         }
@@ -32,39 +33,92 @@ class DisplayInputs extends React.Component {
         })
     }
 
-    setAge = age => {
+    setAge = e => {
+        if (e.target.value > 130) {
+            this.setState({
+                age: 130
+        })
+        } else if (e.target.value < 0) {
+            this.setState({
+                age: 0
+        })
+        } else {
+            this.setState({
+                age: e.target.value
+        })
+        }
+    }
+
+    setHeightInCm = e => {
+        let cmToinches = convert(e.target.value).from('cm').to('in');
         this.setState({
-            age: age,
+            heightInCm: e.target.value,
+            heightInFeet: (cmToinches / 12).toFixed(0),
+            heightInInches: (cmToinches % 12).toFixed(0)
         })
     }
 
-    setHeightInCm = height => {
+    setHeightInFeet = e => {
+        let inchesToCm = convert(this.state.heightInInches).from('in').to('cm');
+        const feetToCm = (feet) => {
+             return convert(feet)
+             .from('ft')
+             .to('cm');
+        }
+        if (e.target.value > 9) {
+            this.setState({
+                heightInFeet: 9,
+                heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+        })
+        } else if (e.target.value < 0) {
+            this.setState({
+                heightInFeet: 0,
+                heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+        })
+        } else {
+            this.setState({
+                heightInFeet: e.target.value,
+                heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+        })
+        }
+    }
+
+    setHeightInInches = e => {
+        let feetToCm = convert(this.state.heightInFeet).from('ft').to('cm');
+        const inchesToCm = (feet) => {
+             return convert(feet)
+             .from('in')
+             .to('cm');
+        }
+        if (e.target.value > 11) {
+            this.setState({
+                heightInInches: 11,
+                heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+        })
+        } else if (e.target.value < 0) {
+            this.setState({
+                heightInInches: 0,
+                heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+        })
+        } else {
+            this.setState({
+                heightInInches: e.target.value,
+                heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+        })
+        }
+    }
+
+    setWeightInKg = e => {
         this.setState({
-            heightInCm: height,
+            weightInKg: e.target.value,
+            weightInLbs: convert(e.target.value).from('kg').to('lb').toFixed(0)
         })
     }
 
-    setHeightInFeet = height => {
+    setWeightInLbs = e => {
         this.setState({
-            heightInFeet: height,
-        })
-    }
-
-    setHeightInInches = height => {
-        this.setState({
-            heightInInches: height,
-        })
-    }
-
-    setWeightInKg = weight => {
-        this.setState({
-            weightInKg: weight,
-        })
-    }
-
-    setWeightInLbs = weight => {
-        this.setState({
-            weightInLbs: weight,
+            weightInLbs: e.target.value,
+            weightInKg: convert(e.target.value).from('lb').to('kg').toFixed(0)
         })
     }
 
@@ -75,31 +129,13 @@ class DisplayInputs extends React.Component {
     }
 
     setMeasuringUnit = () => {
-        if (this.state.unitType !== 'metric') {
+        if (this.state.unitType === 'imperial') {
             this.setState({
-                age: 0,
-                gender: this.state.gender,
-                genderIsChecked: false,
-                heightInCm: 0,
-                heightInFeet: 0,
-                heightInInches: 0,
-                weightInKg: 0,
-                weightInLbs: 0,
-                activityLevel: '',
                 unitType: 'metric',
             })
         } 
-        if (this.state.unitType !== 'imperial') {
+        if (this.state.unitType === 'metric') {
             this.setState({
-                age: 0,
-                gender: this.state.gender,
-                genderIsChecked: false,
-                heightInCm: 0,
-                heightInFeet: 0,
-                heightInInches: 0,
-                weightInKg: 0,
-                weightInLbs: 0,
-                activityLevel: '',
                 unitType: 'imperial',
             })   
         }
@@ -107,15 +143,13 @@ class DisplayInputs extends React.Component {
     
     resetInputFields = () => {
         this.setState({
-            toggleUnitsIsChecked: false,
             gender: this.state.gender,
-            genderIsChecked: false,
-            age: 0,
-            heightInCm: 0,
-            heightInFeet: 0,
-            heightInInches: 0,
-            weightInKg: 0,
-            weightInLbs: 0,
+            age: '',
+            heightInCm: '',
+            heightInFeet: '',
+            heightInInches: '',
+            weightInKg: '',
+            weightInLbs: '',
             unitType: 'metric'
         })
     }
@@ -156,27 +190,36 @@ class DisplayInputs extends React.Component {
                     </div>
 
                     </div>
-                    {/* {console.log(this.state)} */}
                 
                         <ToggleMeasuringUnits 
                         gender={this.state.gender}
-                        genderIsChecked={this.state.genderIsChecked}
                         value={this.state.unitType}
                         unitType={this.setMeasuringUnit} 
                         setUnitType={this.setUnitType}/>
                         <h3>CURRENT UNIT TYPE: {this.state.unitType.toUpperCase()}</h3>
 
-                        <InputGender setGender={this.setGender} />
+                        <InputGender 
+                        setGender={this.setGender} />
 
-                        <InputAge setAge={this.setAge} />
+                        <InputAge 
+                        age={this.age}
+                        setAge={this.setAge} />
 
                         <InputHeight 
+                        heightInCm={this.state.heightInCm}
+                        heightInInches={this.state.heightInInches}
+                        heightInFeet={this.state.heightInFeet}
                         setHeightInCm={this.setHeightInCm}
                         setHeightInFeet={this.setHeightInFeet} 
                         setHeightInInches={this.setHeightInInches} 
                         setMeasuringUnit={this.state.unitType} />
 
-                        <InputWeight setWeightInKg={this.setWeightInKg} setWeightInLbs={this.setWeightInLbs} setWeightInInches={this.setWeightInInches} setMeasuringUnit={this.state.unitType} />
+                        <InputWeight 
+                        weightInKg={this.state.weightInKg}
+                        weightInLbs={this.state.weightInLbs}
+                        setWeightInKg={this.setWeightInKg} 
+                        setWeightInLbs={this.setWeightInLbs} 
+                        setMeasuringUnit={this.state.unitType} />
 
                         <InputActivityLevel setActivityLevel={this.setActivityLevel} />
 

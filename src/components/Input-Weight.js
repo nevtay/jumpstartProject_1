@@ -9,14 +9,6 @@ class InputWeight extends React.Component {
         } 
     }
 
-    setWeightInKg = (e) => {
-        this.props.setWeightInKg(e.target.value);
-    };
-
-    setWeightInLbs = (e) => {
-        this.props.setWeightInLbs(e.target.value);
-    };
-
 render() {
 
     const measuringUnitToUse = this.props.setMeasuringUnit;
@@ -29,7 +21,7 @@ render() {
         showKg = <input 
         type="number" 
         value={this.props.weightInKg} 
-        onChange={this.setWeightInKg}
+        onChange={this.props.setWeightInKg}
         onKeyPress={this.inputsToIgnore}
         placeholder="kg"
          />
@@ -40,7 +32,7 @@ render() {
         showLbs = <input 
         type="number" 
         value={this.props.weightInLbs} 
-        onChange={this.setWeightInLbs}
+        onChange={this.props.setWeightInLbs}
         onKeyPress={this.inputsToIgnore}
         placeholder="lbs"
         />

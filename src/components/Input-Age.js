@@ -3,19 +3,20 @@ import React from "react"
 class InputAge extends React.Component {
 
     inputsToIgnore = (e) => {
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value.length === 3) {
+        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === '0' || e.target.value.length >= 3) {
             e.preventDefault();
         } 
     }
 
-    ifInputExceedsMaxAge = (e) => {
-        const maxAge = 130;
-        return e.target.value > 130 ? e.target.value = maxAge : e.target.value
+    ifInputExceedsAge = (e) => {
+        if (e.target.value > 130) {
+            e.target.value = 130;
+        } else {
+            if (e.target.value < 0) {
+                e.target.value = 0;
+            } 
+        }
     }
-    
-    setAge = (e) => {
-            this.props.setAge(e.target.value > 130 ? 130 : e.target.value);
-        }    
 
 render() {
 
@@ -31,13 +32,12 @@ render() {
 
             <input 
             type="number" 
-            // value={this.props.age} 
-            onChange={this.setAge}
+            value={this.props.age} 
+            onChange={this.props.setAge}
             onKeyPress={this.inputsToIgnore}
-            onBlur={this.ifInputExceedsMaxAge}
+            onBlur={this.ifInputExceedsAge}
+            placeholder="age is just a number"
             />
-
-            {/* {console.log(this.props.age)} */}
 
         </fieldset>
         )
