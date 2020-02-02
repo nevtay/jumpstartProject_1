@@ -23,7 +23,7 @@ class DisplayInputs extends React.Component {
             weightInKg: '',
             weightInLbs: '',
             activityLevel: '',
-            unitType: 'metric',
+            unitType: 'metric'
         }
     }
 
@@ -150,7 +150,7 @@ class DisplayInputs extends React.Component {
             heightInInches: '',
             weightInKg: '',
             weightInLbs: '',
-            unitType: 'metric'
+            unitType: 'metric',
         })
     }
 
@@ -221,6 +221,7 @@ class DisplayInputs extends React.Component {
                         style={{width: "150px", margin: 'auto'}} 
                         type="reset"
                         value="Reset All Fields"
+                        checked="false"
                         onClick={this.resetInputFields}
                         onFocus={this.resetInputFields}
                         />                        
