@@ -156,12 +156,6 @@ class DisplayInputs extends React.Component {
 
     render() {
 
-        // let heightInCm;
-        // let heightInFeet;
-        // let heightInInches;
-        // let weightInKg;
-        // let weightInLbs;
-
 
         return (
             
@@ -193,9 +187,9 @@ class DisplayInputs extends React.Component {
                 
                         <ToggleMeasuringUnits 
                         gender={this.state.gender}
-                        value={this.state.unitType}
-                        unitType={this.setMeasuringUnit} 
-                        setUnitType={this.setUnitType}/>
+                        currentUnitType={this.state.unitType}
+                        toggleUnitType={this.setMeasuringUnit} 
+                        />
                         <h3>CURRENT UNIT TYPE: {this.state.unitType.toUpperCase()}</h3>
 
                         <InputGender 
