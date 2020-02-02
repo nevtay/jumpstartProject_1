@@ -53,8 +53,14 @@ class DisplayResults extends React.Component {
         }
       }
       const result = (weightFactor, heightFactor, ageFactor, genderFactor) => weightFactor + heightFactor - ageFactor + genderFactor
+
       if (unitType === 'metric') {
-        if (Boolean(age) === false || Boolean(gender) === false || Boolean(heightInCm) === false || Boolean(weightInKg) === false) {
+        if (
+          Boolean(age) === false ||
+          Boolean(gender) === false ||
+          Boolean(heightInCm) === false ||
+          Boolean(weightInKg) === false
+        ) {
           return 0
         }
         return result(
@@ -65,7 +71,13 @@ class DisplayResults extends React.Component {
         ).toFixed(2)
       } else {
         if (unitType === 'imperial') {
-          if (Boolean(age) === false || Boolean(gender) === false || Boolean(heightInFeet) === false || Boolean(heightInInches) === false || Boolean(weightInLbs) === false) {
+          if (
+            Boolean(age) === false ||
+            Boolean(gender) === false ||
+            Boolean(heightInFeet) === false ||
+            Boolean(heightInInches) === false ||
+            Boolean(weightInLbs) === false
+          ) {
             return 0
           }
           const feetToInches = convert(heightInFeet).from('ft').to('in')
