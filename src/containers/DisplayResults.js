@@ -128,7 +128,7 @@ class DisplayResults extends React.Component {
 
     return (
 
-      <section className="tdee-results">
+      <section data-testid="DisplayResults" className="tdee-results">
 
         <h1>Results</h1>
         <h2>BMI: {calculateBMI()}</h2>
