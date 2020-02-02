@@ -15,33 +15,33 @@ body {
   background-attachment: fixed;
   background-position-x: 0px;
   background-position-y: 0px;
-  animation: backgroundMove 15s ease infinite;
+  animation: backgroundMove 120s ease-in-out infinite;
 }
 
 @keyframes backgroundMove {
   0% {
-    background-position-x: 2000%;
-    background-position-y: 100%;
+    background-position-x: 2000px;
+    background-position-y: 500px;
   }
 
   25% {
-    background-position-x: 3000%;
-    background-position-y: 2000%;
+    background-position-x: 4000px;
+    background-position-y: 2000px;
   }
 
   50% {
-    background-position-x: 3500%;
-    background-position-y: 3000%;
+    background-position-x: 5500px;
+    background-position-y: 3000px;
   }
 
   75% {
-    background-position-x: 3000%;
-    background-position-y: 4000%;
+    background-position-x: 3500px;
+    background-position-y: 4000px;
   }
 
   100% {
-    background-position-x: 2000%;
-    background-position-y: 100%;
+    background-position-x: 2000px;
+    background-position-y: 500px;
   }
 }
 
