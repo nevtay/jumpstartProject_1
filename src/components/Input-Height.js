@@ -15,7 +15,7 @@ class InputHeight extends React.Component {
 
 
     inputsToIgnoreInches = (e) => {
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > 2 || e.target.value > 11) {
+        if (e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length > 2 || e.target.value > 11) {
             e.preventDefault();
             return;
         }
