@@ -159,7 +159,7 @@ class DisplayInputs extends React.Component {
 
         return (
             
-            <section className="tdee-container">              
+            <section data-testid="DisplayInputs" className="tdee-container">              
                 <div className="tdee-container-inputs">
                     <form className="tdee-inputs">
 
@@ -221,7 +221,7 @@ class DisplayInputs extends React.Component {
                         style={{width: "150px", margin: 'auto'}} 
                         type="reset"
                         value="Reset All Fields"
-                        checked="false"
+                        defaultChecked={false}
                         onClick={this.resetInputFields}
                         onFocus={this.resetInputFields}
                         />                        
