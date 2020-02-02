@@ -1,21 +1,15 @@
 import React from 'react'
 
 class ToggleMeasuringUnits extends React.Component {
-  
-    toggleMeasuringUnits = (e) => {
-      this.props.unitType(e.target.value)
-  }
-
   render () {
     return (
       <div className="toggle-switch">
         <input
           type="checkbox"
-          value={this.props.value === 'metric' ? 'Use Imperial Units' : 'Use Metric Units'}
-          onClick={this.toggleMeasuringUnits}
-          onChange={this.toggleMeasuringUnits}
+          value={this.props.currentUnitType === 'metric' ? 'Use Imperial Units' : 'Use Metric Units'}
+          onClick={this.props.toggleUnitType}
+          onChange={this.props.toggleUnitType}
         />
-        {/* {console.log(this.props)} */}
       </div>
     )
   }
