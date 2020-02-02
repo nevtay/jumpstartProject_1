@@ -36,7 +36,7 @@ render() {
             onChange={this.props.setAge}
             onKeyPress={this.inputsToIgnore}
             onBlur={this.ifInputExceedsAge}
-            placeholder="age is just a number"
+            placeholder="years"
             />
 
         </fieldset>
