@@ -1,47 +1,29 @@
-import React from "react"
+import React from 'react'
 
 class InputAge extends React.Component {
+  render () {
+    return (
+      <fieldset id="age">
 
-    inputsToIgnore = (e) => {
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === '0' || e.target.value.length >= 3) {
-            e.preventDefault();
-        } 
-    }
-
-    ifInputExceedsAge = (e) => {
-        if (e.target.value > 130) {
-            e.target.value = 130;
-        } else {
-            if (e.target.value < 0) {
-                e.target.value = 0;
-            } 
-        }
-    }
-
-render() {
-
-    return(
-        <fieldset id="age">
-
-            <label 
-            htmlFor="age" 
-            className="tdee-inputs__label" 
-            id="inputs-age"> 
+        <label
+          htmlFor="age"
+          className="tdee-inputs__label"
+          id="inputs-age">
             Age (max age: 130)
-            </label>
+        </label>
 
-            <input 
-            type="number" 
-            value={this.props.age} 
-            onChange={this.props.setAge}
-            onKeyPress={this.inputsToIgnore}
-            onBlur={this.ifInputExceedsAge}
-            placeholder="years"
-            />
+        <input
+          type="number"
+          max={130}
+          min={0}
+          value={this.props.age}
+          onChange={this.props.setAge}
+          placeholder="years"
+        />
 
-        </fieldset>
-        )
-    }
+      </fieldset>
+    )
+  }
 }
 
-export default InputAge;
+export default InputAge
