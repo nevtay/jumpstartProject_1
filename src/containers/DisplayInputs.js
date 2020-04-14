@@ -29,13 +29,13 @@ class DisplayInputs extends React.Component {
 
     setGender = gender => {
         this.setState({
-            gender: gender,
+            gender: gender
         })
     }
 
     setAge = e => {
         let ageToSet = e.target.value
-        if (ageToSet >= 130) {
+        if (ageToSet > 130) {
             e.preventDefault()
             e.target.value = 130
       } else {
