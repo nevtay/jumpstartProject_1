@@ -223,7 +223,6 @@ class DisplayInputs extends React.Component {
                         value="Reset All Fields"
                         defaultChecked={false}
                         onClick={this.resetInputFields}
-                        onFocus={this.resetInputFields}
                         />                        
                         
                 </form>
