@@ -2,6 +2,14 @@ import React from 'react'
 
 class InputAge extends React.Component {
   render () {
+    const filterCharacters = e => {
+      const keyboardChar = e.key
+      const invalidCharacters = /[-.]/
+      if (keyboardChar.match(invalidCharacters)) {
+        e.preventDefault()
+      }
+    }
+
     return (
       <fieldset id="age">
 
@@ -18,6 +26,7 @@ class InputAge extends React.Component {
           min={0}
           value={this.props.age}
           onChange={this.props.setAge}
+          onKeyDownCapture={e => filterCharacters(e)}
           placeholder="years"
         />
 
