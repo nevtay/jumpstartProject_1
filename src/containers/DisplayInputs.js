@@ -15,7 +15,7 @@ class DisplayInputs extends React.Component {
         super(props);
 
         this.state = {
-            age: 0,
+            age: '',
             gender: '',
             heightInCm: '',
             heightInFeet: '',
@@ -34,19 +34,19 @@ class DisplayInputs extends React.Component {
     }
 
     setAge = e => {
-        if (e.target.value > 130) {
-            this.setState({
-                age: 130
-        })
-        } else if (e.target.value < 0) {
-            this.setState({
-                age: 0
-        })
-        } else {
-            this.setState({
+        let ageToSet = e.target.value
+        if (ageToSet >= 130) {
+            e.preventDefault()
+            e.target.value = 130
+      } else {
+          if (ageToSet < 0) {
+              e.preventDefault()
+              e.target.value = 0
+          }
+      }
+        this.setState({
                 age: e.target.value
         })
-        }
     }
 
     setHeightInCm = e => {
