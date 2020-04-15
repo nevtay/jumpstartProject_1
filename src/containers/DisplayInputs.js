@@ -66,12 +66,13 @@ class DisplayInputs extends React.Component {
     const feetToCm = (feet) => {
       return convert(feet).from("ft").to("cm");
     };
-    if (e.target.value > 9) {
+    if (e.target.value >= 9) {
+      e.target.value = 9;
       this.setState({
-        heightInFeet: 9,
+        heightInFeet: e.target.value,
         heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0),
       });
-    } else if (e.target.value < 0) {
+    } else if (e.target.value <= 0) {
       this.setState({
         heightInFeet: 0,
         heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0),
