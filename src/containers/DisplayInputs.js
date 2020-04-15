@@ -149,6 +149,7 @@ class DisplayInputs extends React.Component {
       heightInInches: "",
       weightInKg: "",
       weightInLbs: "",
+      activityLevel: "",
       unitType: "metric",
     });
   };
