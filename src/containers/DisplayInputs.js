@@ -51,10 +51,13 @@ class DisplayInputs extends React.Component {
 
   setHeightInCm = (e) => {
     let cmToinches = convert(e.target.value).from("cm").to("in");
+    if (e.target.value.length > 3) {
+      return;
+    }
     this.setState({
       heightInCm: e.target.value,
-      heightInFeet: (cmToinches / 12).toFixed(0),
-      heightInInches: (cmToinches % 12).toFixed(1),
+      heightInFeet: Math.floor(cmToinches / 12),
+      heightInInches: Math.floor(cmToinches % 12),
     });
   };
 
