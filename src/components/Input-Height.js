@@ -16,6 +16,9 @@ class InputHeight extends React.Component {
     let showInches;
 
     if (measuringUnitToUse === "metric") {
+      showFeet = "";
+      showInches = "";
+
       showCentimetres = (
         <input
           id="inputs-height"
@@ -27,6 +30,7 @@ class InputHeight extends React.Component {
         />
       );
     } else if (measuringUnitToUse === "imperial") {
+      showCentimetres = "";
       showFeet = (
         <input
           type="number"
