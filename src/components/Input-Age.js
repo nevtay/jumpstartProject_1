@@ -18,11 +18,9 @@ class InputAge extends React.Component {
 
         <input
           type="number"
-          max={130}
-          min={0}
           value={this.props.age}
           onChange={this.props.setAge}
-          onKeyDownCapture={(e) => filterCharacters(e)}
+          onKeyDown={filterCharacters}
           placeholder="years"
         />
       </fieldset>
