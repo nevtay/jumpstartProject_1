@@ -1,76 +1,38 @@
 import React from "react";
 
 class InputHeight extends React.Component {
-  inputsToIgnoreCm = (e) => {
-    if (
-      e.charCode === 46 ||
-      e.charCode === 45 ||
-      e.charCode === 101 ||
-      e.target.value === "0" ||
-      e.target.value.length >= 3
-    ) {
-      e.preventDefault();
-    }
-  };
-
-  inputsToIgnoreFeet = (e) => {
-    if (
-      e.charCode === 46 ||
-      e.charCode === 45 ||
-      e.charCode === 101 ||
-      e.target.value === "0" ||
-      e.target.value.length >= 1
-    ) {
-      e.preventDefault();
-    }
-  };
-
-  inputsToIgnoreInches = (e) => {
-    if (
-      e.charCode === 45 ||
-      e.charCode === 101 ||
-      e.target.value === "0" ||
-      e.target.value.length > 2 ||
-      e.target.value > 11
-    ) {
-      e.preventDefault();
-      return;
-    }
-  };
-
+  // eslint-disable-next-line space-before-function-paren
   render() {
+    const invalidCharacters = /[-.]/;
+    const filterCharacters = (e) => {
+      const keyboardChar = e.key;
+      if (keyboardChar.match(invalidCharacters)) {
+        e.preventDefault();
+      }
+    };
     const measuringUnitToUse = this.props.setMeasuringUnit;
     let showCentimetres;
     let showFeet;
     let showInches;
 
     if (measuringUnitToUse === "metric") {
-      showFeet = "";
-
-      showInches = "";
-
       showCentimetres = (
         <input
           id="inputs-height"
           type="number"
           value={this.props.heightInCm}
           onChange={this.props.setHeightInCm}
-          onKeyPress={this.inputsToIgnoreCm}
+          onKeyDownCapture={filterCharacters}
           placeholder="cm"
         />
       );
-    }
-
-    if (measuringUnitToUse === "imperial") {
-      showCentimetres = "";
-
+    } else if (measuringUnitToUse === "imperial") {
       showFeet = (
         <input
           type="number"
           value={this.props.heightInFeet}
           onChange={this.props.setHeightInFeet}
-          onKeyPress={this.inputsToIgnoreFeet}
-          onBlur={this.inputsToIgnoreFeet}
+          onKeyDown={filterCharacters}
           placeholder="ft"
         />
       );
@@ -80,8 +42,7 @@ class InputHeight extends React.Component {
           type="number"
           value={this.props.heightInInches}
           onChange={this.props.setHeightInInches}
-          onKeyPress={this.inputsToIgnoreInches}
-          onBlur={this.inchesInvalidValuesCheck}
+          onKeyDown={filterCharacters}
           placeholder="inches"
         />
       );
@@ -93,7 +54,6 @@ class InputHeight extends React.Component {
           {this.props.setMeasuringUnit === "metric"
             ? "Height (cm)"
             : "Height (feet and inches)"}
-          &nbsp;
         </label>
 
         {showCentimetres}
