@@ -1,10 +1,9 @@
 .tdee-header {
-    width: 100vw;
-    margin: auto;
+  width: 100vw;
 }
 
 .tdee-header__title {
-    text-align: center;
-    margin: 0;
-    font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  font-size: 3rem;
 }
