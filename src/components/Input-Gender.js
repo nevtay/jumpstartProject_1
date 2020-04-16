@@ -1,32 +1,54 @@
 import React from 'react'
+import './Input-Gender.css'
 
 class InputGender extends React.Component {
   render () {
     return (
-      <fieldset id="gender">
-        <label>Select Biological Gender: </label>
+      <fieldset className="tdee-input-gender-fieldset" id="gender">
 
-        <input
-          type="radio"
-          name="gender"
-          id="male"
-          onChange={this.props.setGender}
-          value="male"
-        />
-        <label className="tdee-inputs__label" htmlFor="male">
-          Male
-        </label>
+        <div className="input-group-description">
+          <label>Select Biological Gender: </label>
+        </div>
 
-        <input
-          type="radio"
-          name="gender"
-          id="female"
-          onChange={this.props.setGender}
-          value="female"
-        />
-        <label className="tdee-inputs__label" htmlFor="female">
-          Female
-        </label>
+        <div className="input-group">
+
+          <div className="input-subGroup">
+            <div className="input-group-radioInput">
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                onChange={this.props.setGender}
+                value="male"
+              />
+            </div>
+
+            <div className="input-group-radioLabel">
+              <label htmlFor="male">
+              Male
+              </label>
+            </div>
+          </div>
+
+          <div className="input-subGroup">
+            <div className="input-group-radioInput">
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                onChange={this.props.setGender}
+                value="female"
+              />
+            </div>
+
+            <div className="input-group-radioLabel">
+              <label className="tdee-inputs__label" htmlFor="female">
+              Female
+              </label>
+            </div>
+          </div>
+
+        </div>
       </fieldset>
     )
   }
