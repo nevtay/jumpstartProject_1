@@ -35,19 +35,24 @@ class DisplayInputs extends React.Component {
     }
 
     const setAge = (e) => {
-      const ageToSet = e.target.value
-      if (ageToSet > 130) {
-        e.preventDefault()
-        e.target.value = 130
-      } else {
-        if (ageToSet < 0) {
-          e.preventDefault()
-          e.target.value = 0
-        }
+      if (e.target.value.length > 3) {
+        return
       }
-      this.setState({
-        age: e.target.value
-      })
+      if (e.target.value > 130) {
+        e.target.value = 130
+        this.setState({
+          age: e.target.value
+        })
+      } else if (e.target.value < 0) {
+        e.target.value = 0
+        this.setState({
+          age: e.target.value
+        })
+      } else {
+        this.setState({
+          age: e.target.value
+        })
+      }
     }
 
     const setHeightInCm = (e) => {
@@ -176,58 +181,37 @@ class DisplayInputs extends React.Component {
       <section data-testid="DisplayInputs" className="tdee-container">
         <div className="tdee-container-inputs">
           <form className="tdee-inputs">
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexFlow: 'row wrap',
-                margin: 'auto'
-              }}
-            >
-              <div style={{ width: '45%' }}>
-                <ul
-                  style={{
-                    display: 'flex',
-                    flexFlow: 'column wrap',
-                    alignItems: 'flex-start',
-                    textAlign: 'left'
-                  }}
-                >
-                  <h3>
+            <div className="tdee-instructions">
+              <div style={{ width: '50%' }}>
+                <ul>
+                  <h3 style={{ textAlign: 'left' }}>
                     <strong>Instructions!</strong>
                   </h3>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     BMI requires height and weight
                   </li>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     BMR requires height, weight, age, and gender
                   </li>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     TDEE requires all inputs to be filled and an option picked
                     from the activity level box.
                   </li>
                 </ul>
               </div>
 
-              <div style={{ width: '45%' }}>
-                <ul
-                  style={{
-                    display: 'flex',
-                    flexFlow: 'column wrap',
-                    alignItems: 'flex-start',
-                    textAlign: 'left'
-                  }}
-                >
-                  <h3>
+              <div style={{ width: '50%' }}>
+                <ul>
+                  <h3 style={{ textAlign: 'left' }}>
                     <strong>Definitions!</strong>
                   </h3>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     BMI: Body Mass Index
                   </li>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     BMR: Basal Metabolic Rate
                   </li>
-                  <li style={{ listStyleType: 'square', margin: '0' }}>
+                  <li className="tdee-instructions-single">
                     TDEE: Total Daily Energy Expenditure.
                   </li>
                 </ul>
@@ -243,7 +227,7 @@ class DisplayInputs extends React.Component {
 
             <InputGender setGender={setGender} />
 
-            <InputAge age={this.age} setAge={setAge} />
+            <InputAge age={this.state.age} setAge={setAge} />
 
             <InputHeight
               heightInCm={this.state.heightInCm}
