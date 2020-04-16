@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react'
 
 class InputAge extends React.Component {
-  render() {
+  render () {
     const filterCharacters = (e) => {
-      const keyboardChar = e.key;
-      const invalidCharacters = /[-.]/;
+      const keyboardChar = e.key
+      const invalidCharacters = /[-.]/
       if (keyboardChar.match(invalidCharacters)) {
-        e.preventDefault();
+        e.preventDefault()
       }
-    };
+    }
 
     return (
       <fieldset id="age">
@@ -24,8 +24,8 @@ class InputAge extends React.Component {
           placeholder="years"
         />
       </fieldset>
-    );
+    )
   }
 }
 
-export default InputAge;
+export default InputAge
