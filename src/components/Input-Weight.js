@@ -5,7 +5,7 @@ class InputWeight extends React.Component {
     const invalidCharacters = /[-.]/
     const filterCharacters = (e) => {
       const keyboardChar = e.key
-      if (keyboardChar.match(invalidCharacters) || e.target.value.length >= 3) {
+      if (keyboardChar.match(invalidCharacters)) {
         e.preventDefault()
       }
     }
