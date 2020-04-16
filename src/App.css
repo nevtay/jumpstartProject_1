@@ -10,7 +10,8 @@ html {
 
 body {
   overflow-x: hidden;
-  padding: 10px 15px;
+  overflow-y: scroll;
+  padding: 50px 15px;
   height: inherit;
   display: flex;
   justify-content: center;
@@ -22,13 +23,6 @@ body {
   background-position-x: 0px;
   background-position-y: 0px;
   animation: backgroundMove 120s ease-in-out infinite;
-}
-
-.App {
-  height: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
 }
 
 @keyframes backgroundMove {
