@@ -54,15 +54,17 @@ class InputHeight extends React.Component {
 
     return (
       <fieldset id="height">
+
         <label htmlFor="height">
           {this.props.setMeasuringUnit === 'metric'
             ? 'Height (cm)'
             : 'Height (feet and inches)'}
         </label>
 
-        {showCentimetres}
-        {showFeet}
-        {showInches}
+        {this.props.setMeasuringUnit === 'metric'
+          ? showCentimetres
+          : [showFeet, showInches]}
+
       </fieldset>
     )
   }
