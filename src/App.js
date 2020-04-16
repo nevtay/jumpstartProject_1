@@ -7,10 +7,8 @@ function App () {
   return (
 
     <div className="App">
-
       <Header />
       <DisplayInputs />
-
     </div>
   )
 }
