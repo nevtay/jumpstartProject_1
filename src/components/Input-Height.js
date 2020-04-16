@@ -3,8 +3,16 @@ import React from 'react'
 class InputHeight extends React.Component {
   // eslint-disable-next-line space-before-function-paren
   render() {
-    const invalidCharacters = /[-.]/
     const filterCharacters = (e) => {
+      const invalidCharacters = /[-.]/
+      const keyboardChar = e.key
+      if (keyboardChar.match(invalidCharacters)) {
+        e.preventDefault()
+      }
+    }
+
+    const filterCharactersInches = (e) => {
+      const invalidCharacters = /[-]/
       const keyboardChar = e.key
       if (keyboardChar.match(invalidCharacters)) {
         e.preventDefault()
@@ -46,7 +54,7 @@ class InputHeight extends React.Component {
           type="number"
           value={this.props.heightInInches}
           onChange={this.props.setHeightInInches}
-          onKeyDown={filterCharacters}
+          onKeyDown={filterCharactersInches}
           placeholder="inches"
         />
       )
