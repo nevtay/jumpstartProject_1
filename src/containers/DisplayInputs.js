@@ -250,7 +250,6 @@ class DisplayInputs extends React.Component {
             <InputActivityLevel setActivityLevel={setActivityLevel} />
 
             <input
-              style={{ width: '150px', margin: 'auto' }}
               type="reset"
               value="Reset All Fields"
               defaultChecked={false}
