@@ -1,6 +1,7 @@
 # A Simple Tdee Calculator
 #### By Nevin Tay
-<hr />
+URL: https://tdeeasy.netlify.app/
+
 This is a simple front-end calculator built in React.
 
 ## Features
