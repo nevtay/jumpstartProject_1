@@ -124,7 +124,10 @@ class DisplayResults extends React.Component {
 
     const messageBMI = (bmiFn) => {
       if (bmiFn === 0) {
-        return
+        return ''
+      }
+      if (!isFinite(bmiFn) || isNaN(bmiFn)) {
+        return 'What did you do?????'
       }
       if (bmiFn < 18.5) {
         return 'Underweight! A healthy BMI is between 18.5 and 25.'
@@ -146,7 +149,7 @@ class DisplayResults extends React.Component {
 
         <h1>Results</h1>
         <h2>BMI: {calculateBMI()}</h2>
-        <span style={{ maxWidth: '150px' }}>{messageBMI(calculateBMI)}</span>
+        <span style={{ maxWidth: '150px' }}>{messageBMI(calculateBMI())}</span>
         <h2>BMR: {calculateBMR()} calories a day</h2>
         <h2>TDEE: {calculateTDEE()} calories a day</h2>
 
