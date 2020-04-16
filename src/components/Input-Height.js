@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react'
 
 class InputHeight extends React.Component {
   // eslint-disable-next-line space-before-function-paren
   render() {
-    const invalidCharacters = /[-.]/;
+    const invalidCharacters = /[-.]/
     const filterCharacters = (e) => {
-      const keyboardChar = e.key;
+      const keyboardChar = e.key
       if (keyboardChar.match(invalidCharacters)) {
-        e.preventDefault();
+        e.preventDefault()
       }
-    };
-    const measuringUnitToUse = this.props.setMeasuringUnit;
-    let showCentimetres;
-    let showFeet;
-    let showInches;
+    }
+    const measuringUnitToUse = this.props.setMeasuringUnit
+    let showCentimetres
+    let showFeet
+    let showInches
 
-    if (measuringUnitToUse === "metric") {
-      showFeet = "";
-      showInches = "";
+    if (measuringUnitToUse === 'metric') {
+      showFeet = ''
+      showInches = ''
 
       showCentimetres = (
         <input
@@ -28,9 +28,9 @@ class InputHeight extends React.Component {
           onKeyDownCapture={filterCharacters}
           placeholder="cm"
         />
-      );
-    } else if (measuringUnitToUse === "imperial") {
-      showCentimetres = "";
+      )
+    } else if (measuringUnitToUse === 'imperial') {
+      showCentimetres = ''
       showFeet = (
         <input
           type="number"
@@ -39,7 +39,7 @@ class InputHeight extends React.Component {
           onKeyDown={filterCharacters}
           placeholder="ft"
         />
-      );
+      )
 
       showInches = (
         <input
@@ -49,23 +49,23 @@ class InputHeight extends React.Component {
           onKeyDown={filterCharacters}
           placeholder="inches"
         />
-      );
+      )
     }
 
     return (
       <fieldset id="height">
         <label htmlFor="height">
-          {this.props.setMeasuringUnit === "metric"
-            ? "Height (cm)"
-            : "Height (feet and inches)"}
+          {this.props.setMeasuringUnit === 'metric'
+            ? 'Height (cm)'
+            : 'Height (feet and inches)'}
         </label>
 
         {showCentimetres}
         {showFeet}
         {showInches}
       </fieldset>
-    );
+    )
   }
 }
 
-export default InputHeight;
+export default InputHeight
