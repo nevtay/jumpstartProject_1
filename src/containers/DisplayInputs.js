@@ -69,43 +69,53 @@ class DisplayInputs extends React.Component {
     }
 
     const setHeightInFeet = (e) => {
-      const inchesToCm = convert(this.state.heightInInches).from('in').to('cm')
       const MAX_LENGTH_FOR_FEET = 1
       if (e.target.value.length > MAX_LENGTH_FOR_FEET) {
         return
       }
+      const inchesToCm = convert(this.state.heightInInches).from('in').to('cm')
       const feetToCm = (feet) => {
         return convert(feet).from('ft').to('cm')
       }
       if (e.target.value >= 9) {
         e.target.value = 9
-      } else if (e.target.value < 0 || e.target.value === '') {
-        e.target.value = ''
+      } else if (e.target.value < 0 || e.target.value.length === 0) {
+        e.target.value = 0
+        this.setState({
+          heightInFeet: '',
+          heightInCm: parseInt(inchesToCm + 0).toFixed(1)
+        })
+      } else {
+        this.setState({
+          heightInFeet: e.target.value,
+          heightInCm: parseInt(inchesToCm + feetToCm(e.target.value)).toFixed(1)
+        })
       }
-      this.setState({
-        heightInFeet: e.target.value,
-        heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(1)
-      })
     }
 
     const setHeightInInches = (e) => {
-      const feetToCm = convert(this.state.heightInFeet).from('ft').to('cm')
       const MAX_LENGTH_FOR_INCHES = 4
       if (e.target.value.length > MAX_LENGTH_FOR_INCHES) {
         return
       }
+      const feetToCm = convert(this.state.heightInFeet).from('ft').to('cm')
       const inchesToCm = (feet) => {
         return convert(feet).from('in').to('cm')
       }
-      if (e.target.value >= 11) {
+      if (e.target.value > 11) {
         e.target.value = 11
-      } else if (e.target.value < 0 || e.target.value === '') {
-        e.target.value = ''
+      } else if (e.target.value < 0 || e.target.value.length === 0) {
+        e.target.value = 0
+        this.setState({
+          heightInInches: '',
+          heightInCm: parseInt(feetToCm + e.target.value).toFixed(1)
+        })
+      } else {
+        this.setState({
+          heightInInches: e.target.value,
+          heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(1)
+        })
       }
-      this.setState({
-        heightInInches: e.target.value,
-        heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(1)
-      })
     }
 
     const setWeightInKg = (e) => {
@@ -120,6 +130,10 @@ class DisplayInputs extends React.Component {
     }
 
     const setWeightInLbs = (e) => {
+      const MAX_LENGTH_FOR_LBS = 4
+      if (e.target.value.length > MAX_LENGTH_FOR_LBS) {
+        return
+      }
       this.setState({
         weightInLbs: e.target.value,
         weightInKg: convert(e.target.value).from('lb').to('kg').toFixed(0)
