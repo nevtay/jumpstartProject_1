@@ -5,11 +5,12 @@ URL: https://tdeeasy.netlify.app/
 This is a simple front-end calculator built in React.
 
 ## Features
-It can calculate 
+It calculates 
 - **BMI**: Body Mass Index
 - **BMR**: Basal Metabolic Rate
 - **TDEE**: Total Daily Energy Expenditure
-- Toggle between metric and imperial units, and automatically convert height and weight values accordingly
+
+Users can also toggle between imperial and metric units. Toggling between units will also automatically convert their input values accordingly.
 
 ## How To Use
 - To calculate BMI, enter *Weight* and *Height*
