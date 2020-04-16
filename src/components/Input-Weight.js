@@ -1,60 +1,50 @@
-import React from "react"
-
+import React from 'react'
 
 class InputWeight extends React.Component {
-
-    inputsToIgnore = (e) => {
-        if (e.charCode === 46 || e.charCode === 45 || e.charCode === 101 || e.target.value === "0" || e.target.value.length >= 3) {
-            e.preventDefault();
-        } 
+  render () {
+    const invalidCharacters = /[-.]/
+    const filterCharacters = (e) => {
+      const keyboardChar = e.key
+      if (keyboardChar.match(invalidCharacters) || e.target.value.length >= 3) {
+        e.preventDefault()
+      }
     }
+    const measuringUnitToUse = this.props.setMeasuringUnit
+    let showKg
+    let showLbs
 
-render() {
-
-    const measuringUnitToUse = this.props.setMeasuringUnit;
-    let showKg;
-    let showLbs;
-
-    if (measuringUnitToUse === "metric") {
-        
-        showLbs = '';
-        showKg = <input 
-        type="number" 
-        value={this.props.weightInKg} 
+    if (measuringUnitToUse === 'metric') {
+      showLbs = ''
+      showKg = <input
+        type="number"
+        value={this.props.weightInKg}
         onChange={this.props.setWeightInKg}
-        onKeyPress={this.inputsToIgnore}
+        onKeyPress={filterCharacters}
         placeholder="kg"
-         />
-
+      />
     } else {
-        
-        showKg = '';
-        showLbs = <input 
-        type="number" 
-        value={this.props.weightInLbs} 
+      showKg = ''
+      showLbs = <input
+        type="number"
+        value={this.props.weightInLbs}
         onChange={this.props.setWeightInLbs}
-        onKeyPress={this.inputsToIgnore}
+        onKeyPress={filterCharacters}
         placeholder="lbs"
-        />
-
+      />
     }
 
-    return(
-        <fieldset id="weight">
-           
-            <label 
-            htmlFor="weight" 
-            className="tdee-inputs__label"
-            > 
-            {this.props.setMeasuringUnit === "metric" ? "Weight (kg)" : "Weight (lbs)"}&nbsp;
-            </label>
+    return (
+      <fieldset id="weight">
 
-            {showKg}
-            {showLbs}
+        <label htmlFor="weight"className="tdee-inputs__label">
+          {this.props.setMeasuringUnit === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
+        </label>
 
-        </fieldset>
-        )
-    }
+        {this.props.setMeasuringUnit === 'metric' ? showKg : showLbs}
+
+      </fieldset>
+    )
+  }
 }
 
-export default InputWeight;
+export default InputWeight
