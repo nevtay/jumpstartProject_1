@@ -16,6 +16,10 @@ class DisplayResults extends React.Component {
       unitType
     } = this.props.personalInfo
 
+    const calculateTDEE = ({ activityLevel } = this.props.personalInfo) => {
+      return Math.floor(calculateBMR() * activityLevel)
+    }
+
     const calculateBMI = ({ heightInCm, heightInFeet, heightInInches, weightInKg, weightInLbs, unitType } = this.props.personalInfo) => {
       if (unitType === 'metric') {
         if (heightInCm === '' || weightInKg === '') {
@@ -49,7 +53,7 @@ class DisplayResults extends React.Component {
       }
     }
 
-    const result = (weightFactor, heightFactor, ageFactor, genderFactor) => weightFactor + heightFactor - ageFactor + genderFactor
+    const handleBMRCalculation = (weightFactor, heightFactor, ageFactor, genderFactor) => weightFactor + heightFactor - ageFactor + genderFactor
 
     const calculateBMR = ({ age, gender, heightInCm, heightInFeet, heightInInches, weightInKg, weightInLbs, unitType } = this.props.personalInfo) => {
       const weightFactorMetric = weight => Number(weight * 10)
@@ -64,6 +68,7 @@ class DisplayResults extends React.Component {
           return -161
         }
       }
+
       if (unitType === 'metric') {
         if (
           !age || parseInt(age) === 0 ||
@@ -73,7 +78,7 @@ class DisplayResults extends React.Component {
         ) {
           return 0
         } else {
-          return result(
+          return handleBMRCalculation(
             weightFactorMetric(weightInKg),
             heightFactorMetric(heightInCm),
             ageFactor(age),
@@ -81,6 +86,7 @@ class DisplayResults extends React.Component {
           ).toFixed(2)
         }
       }
+
       if (unitType === 'imperial') {
         if (
           !age || parseInt(age) === 0 ||
@@ -94,7 +100,7 @@ class DisplayResults extends React.Component {
         } else {
           const feetToInches = convert(heightInFeet).from('ft').to('in')
           const totalHeightInInches = Number(heightInInches) + Number(feetToInches)
-          return result(
+          return handleBMRCalculation(
             weightFactorImperial(weightInLbs),
             heightFactorImperial(totalHeightInInches),
             ageFactor(age),
@@ -102,10 +108,6 @@ class DisplayResults extends React.Component {
           ).toFixed(2)
         }
       }
-    }
-
-    const calculateTDEE = ({ activityLevel } = this.props.personalInfo) => {
-      return Math.floor(calculateBMR() * activityLevel)
     }
 
     if (unitType === 'metric') {
