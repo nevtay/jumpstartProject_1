@@ -52,18 +52,23 @@ class DisplayInputs extends React.Component {
 
     const setHeightInCm = (e) => {
       const cmToinches = convert(e.target.value).from('cm').to('in')
-      if (e.target.value.length > 3) {
+      const MAX_LENGTH_FOR_CM = 3
+      if (e.target.value.length > MAX_LENGTH_FOR_CM) {
         return
       }
       this.setState({
         heightInCm: e.target.value,
-        heightInFeet: Math.floor(cmToinches / 12).toFixed(0),
-        heightInInches: Math.floor(cmToinches % 12).toFixed(0)
+        heightInFeet: Math.floor(cmToinches / 12),
+        heightInInches: Math.floor(cmToinches % 12)
       })
     }
 
     const setHeightInFeet = (e) => {
       const inchesToCm = convert(this.state.heightInInches).from('in').to('cm')
+      const MAX_LENGTH_FOR_FEET = 1
+      if (e.target.value.length > MAX_LENGTH_FOR_FEET) {
+        return
+      }
       const feetToCm = (feet) => {
         return convert(feet).from('ft').to('cm')
       }
@@ -73,9 +78,10 @@ class DisplayInputs extends React.Component {
           heightInFeet: e.target.value,
           heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
         })
-      } else if (e.target.value <= 0) {
+      } else if (e.target.value < 0) {
+        e.target.value = 0
         this.setState({
-          heightInFeet: 0,
+          heightInFeet: e.target.value,
           heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
         })
       } else {
@@ -88,12 +94,17 @@ class DisplayInputs extends React.Component {
 
     const setHeightInInches = (e) => {
       const feetToCm = convert(this.state.heightInFeet).from('ft').to('cm')
+      const MAX_LENGTH_FOR_INCHES = 2
+      if (e.target.value.length > MAX_LENGTH_FOR_INCHES) {
+        return
+      }
       const inchesToCm = (feet) => {
         return convert(feet).from('in').to('cm')
       }
-      if (e.target.value > 11) {
+      if (e.target.value >= 11) {
+        e.target.value = 11
         this.setState({
-          heightInInches: 11,
+          heightInInches: e.target.value,
           heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
         })
       } else if (e.target.value < 0) {
