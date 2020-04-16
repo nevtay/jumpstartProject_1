@@ -11,7 +11,7 @@ import './DisplayInputs.css'
 import convert from 'convert-units'
 
 class DisplayInputs extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -27,7 +27,7 @@ class DisplayInputs extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const setGender = (e) => {
       this.setState({
         gender: e.target.value
@@ -63,8 +63,8 @@ class DisplayInputs extends React.Component {
       const cmToinches = convert(e.target.value).from('cm').to('in')
       this.setState({
         heightInCm: e.target.value,
-        heightInFeet: Math.floor((cmToinches / 12)),
-        heightInInches: ((cmToinches % 12).toFixed(1))
+        heightInFeet: Math.floor(cmToinches / 12),
+        heightInInches: (cmToinches % 12).toFixed(1)
       })
     }
 
@@ -173,22 +173,22 @@ class DisplayInputs extends React.Component {
       })
     }
     return (
-      <section data-testid="DisplayInputs" className="tdee-container">
-        <div className="tdee-container-inputs">
-          <form className="tdee-inputs">
-            <div className="tdee-instructions">
+      <section data-testid='DisplayInputs' className='tdee-container'>
+        <div className='tdee-container-inputs'>
+          <form className='tdee-inputs'>
+            <div className='tdee-instructions'>
               <div style={{ width: '50%' }}>
                 <ul>
                   <h3 style={{ textAlign: 'left' }}>
                     <strong>Instructions!</strong>
                   </h3>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     BMI requires height and weight
                   </li>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     BMR requires height, weight, age, and gender
                   </li>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     TDEE requires all inputs to be filled and an option picked
                     from the activity level box.
                   </li>
@@ -200,13 +200,13 @@ class DisplayInputs extends React.Component {
                   <h3 style={{ textAlign: 'left' }}>
                     <strong>Definitions!</strong>
                   </h3>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     BMI: Body Mass Index
                   </li>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     BMR: Basal Metabolic Rate
                   </li>
-                  <li className="tdee-instructions-single">
+                  <li className='tdee-instructions-single'>
                     TDEE: Total Daily Energy Expenditure.
                   </li>
                 </ul>
@@ -245,15 +245,15 @@ class DisplayInputs extends React.Component {
             <InputActivityLevel setActivityLevel={setActivityLevel} />
 
             <input
-              type="reset"
-              value="Reset All Fields"
+              type='reset'
+              value='Reset All Fields'
               defaultChecked={false}
               onClick={resetInputFields}
             />
           </form>
         </div>
 
-        <div className="tdee-container-inputResults">
+        <div className='tdee-container-inputResults'>
           <DisplayResults personalInfo={{ ...this.state }} />
         </div>
       </section>
