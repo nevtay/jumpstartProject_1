@@ -104,7 +104,7 @@ class DisplayInputs extends React.Component {
       }
       this.setState({
         heightInInches: e.target.value,
-        heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(2)
+        heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(1)
       })
     }
 
