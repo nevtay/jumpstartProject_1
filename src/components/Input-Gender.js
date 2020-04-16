@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 class InputGender extends React.Component {
-  render() {
+  render () {
     return (
       <fieldset id="gender">
         <label>Select Biological Gender: </label>
@@ -28,8 +28,8 @@ class InputGender extends React.Component {
           Female
         </label>
       </fieldset>
-    );
+    )
   }
 }
 
-export default InputGender;
+export default InputGender
