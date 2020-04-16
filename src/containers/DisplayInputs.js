@@ -51,15 +51,15 @@ class DisplayInputs extends React.Component {
     }
 
     const setHeightInCm = (e) => {
-      const cmToinches = convert(e.target.value).from('cm').to('in')
       const MAX_LENGTH_FOR_CM = 3
       if (e.target.value.length > MAX_LENGTH_FOR_CM) {
         return
       }
+      const cmToinches = convert(e.target.value).from('cm').to('in')
       this.setState({
         heightInCm: e.target.value,
         heightInFeet: Math.floor(cmToinches / 12),
-        heightInInches: Math.floor(cmToinches % 12)
+        heightInInches: (cmToinches % 12).toFixed(1)
       })
     }
 
@@ -76,54 +76,60 @@ class DisplayInputs extends React.Component {
         e.target.value = 9
         this.setState({
           heightInFeet: e.target.value,
-          heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
         })
       } else if (e.target.value < 0) {
-        e.target.value = 0
+        e.target.value = ''
         this.setState({
           heightInFeet: e.target.value,
-          heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
         })
       } else {
         this.setState({
           heightInFeet: e.target.value,
-          heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(0)
+          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
         })
       }
     }
 
     const setHeightInInches = (e) => {
       const feetToCm = convert(this.state.heightInFeet).from('ft').to('cm')
-      const MAX_LENGTH_FOR_INCHES = 2
+      const convertInchesStringToNumber = parseFloat(e.target.value)
+      const MAX_LENGTH_FOR_INCHES = 4
       if (e.target.value.length > MAX_LENGTH_FOR_INCHES) {
         return
       }
       const inchesToCm = (feet) => {
         return convert(feet).from('in').to('cm')
       }
-      if (e.target.value >= 11) {
+      if (convertInchesStringToNumber >= 11) {
         e.target.value = 11
         this.setState({
           heightInInches: e.target.value,
-          heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
         })
-      } else if (e.target.value < 0) {
+      } else if (convertInchesStringToNumber < 0) {
+        e.target.value = ''
         this.setState({
           heightInInches: 0,
-          heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
         })
       } else {
         this.setState({
-          heightInInches: e.target.value,
-          heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(0)
+          heightInInches: convertInchesStringToNumber,
+          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
         })
       }
     }
 
     const setWeightInKg = (e) => {
+      const MAX_LENGTH_FOR_KG = 3
+      if (e.target.value.length > MAX_LENGTH_FOR_KG) {
+        return
+      }
       this.setState({
         weightInKg: e.target.value,
-        weightInLbs: convert(e.target.value).from('kg').to('lb').toFixed(0)
+        weightInLbs: Math.floor(convert(e.target.value).from('kg').to('lb'))
       })
     }
 
