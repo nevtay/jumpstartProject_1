@@ -10,7 +10,7 @@ It calculates
 - **BMR**: Basal Metabolic Rate
 - **TDEE**: Total Daily Energy Expenditure
 
-Users can also toggle between imperial and metric units. Toggling between units will also automatically convert their input values accordingly.
+Users can also toggle between imperial and metric units. Toggling between measurement units will automatically convert their input values accordingly.
 
 ## How To Use
 - To calculate BMI, enter *Weight* and *Height*
