@@ -63,7 +63,7 @@ class DisplayInputs extends React.Component {
       const cmToinches = convert(e.target.value).from('cm').to('in')
       this.setState({
         heightInCm: e.target.value,
-        heightInFeet: Math.floor(cmToinches / 12),
+        heightInFeet: (cmToinches / 12).toFixed(0),
         heightInInches: (cmToinches % 12).toFixed(1)
       })
     }
@@ -79,27 +79,17 @@ class DisplayInputs extends React.Component {
       }
       if (e.target.value >= 9) {
         e.target.value = 9
-        this.setState({
-          heightInFeet: e.target.value,
-          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
-        })
-      } else if (e.target.value < 0) {
+      } else if (e.target.value < 0 || e.target.value === '') {
         e.target.value = ''
-        this.setState({
-          heightInFeet: e.target.value,
-          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
-        })
-      } else {
-        this.setState({
-          heightInFeet: e.target.value,
-          heightInCm: Math.floor((inchesToCm + feetToCm(e.target.value)))
-        })
       }
+      this.setState({
+        heightInFeet: e.target.value,
+        heightInCm: (inchesToCm + feetToCm(e.target.value)).toFixed(1)
+      })
     }
 
     const setHeightInInches = (e) => {
       const feetToCm = convert(this.state.heightInFeet).from('ft').to('cm')
-      const convertInchesStringToNumber = parseFloat(e.target.value)
       const MAX_LENGTH_FOR_INCHES = 4
       if (e.target.value.length > MAX_LENGTH_FOR_INCHES) {
         return
@@ -107,24 +97,15 @@ class DisplayInputs extends React.Component {
       const inchesToCm = (feet) => {
         return convert(feet).from('in').to('cm')
       }
-      if (convertInchesStringToNumber >= 11) {
+      if (e.target.value >= 11) {
         e.target.value = 11
-        this.setState({
-          heightInInches: e.target.value,
-          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
-        })
-      } else if (convertInchesStringToNumber < 0) {
+      } else if (e.target.value < 0 || e.target.value === '') {
         e.target.value = ''
-        this.setState({
-          heightInInches: 0,
-          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
-        })
-      } else {
-        this.setState({
-          heightInInches: convertInchesStringToNumber,
-          heightInCm: Math.floor((feetToCm + inchesToCm(e.target.value)))
-        })
       }
+      this.setState({
+        heightInInches: e.target.value,
+        heightInCm: (feetToCm + inchesToCm(e.target.value)).toFixed(2)
+      })
     }
 
     const setWeightInKg = (e) => {
