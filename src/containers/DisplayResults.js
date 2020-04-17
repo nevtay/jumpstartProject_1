@@ -16,7 +16,7 @@ class DisplayResults extends React.Component {
     } = this.props.personalInfo
 
     const calculateBMI = () => {
-      const displayResult = (bmiValue) => {
+      const displayBMIResult = (bmiValue) => {
         return isNaN(bmiValue) || !isFinite(bmiValue) ? 0 : bmiValue.toFixed(2)
       }
       if (unitType === 'metric') {
@@ -26,7 +26,7 @@ class DisplayResults extends React.Component {
         const weightFactor = Number(weightInKg)
         const heightInMetres = Number(heightInCm) / 100
         const bmiMetric = weightFactor / Math.pow(heightInMetres, 2)
-        return displayResult(bmiMetric)
+        return displayBMIResult(bmiMetric)
       } else {
         if (unitType === 'imperial') {
           if (!heightInInches && !heightInFeet) {
@@ -47,7 +47,7 @@ class DisplayResults extends React.Component {
             Number(heightInInches) + Number(feetToInches)
           const bmiImperial =
             (weightFactor / Math.pow(totalHeightInInches, 2)) * 703
-          return displayResult(bmiImperial)
+          return displayBMIResult(bmiImperial)
         }
       }
     }
