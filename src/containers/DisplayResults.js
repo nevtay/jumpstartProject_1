@@ -32,14 +32,8 @@ class DisplayResults extends React.Component {
           if (!heightInInches && !heightInFeet) {
             return 0
           }
-          if (weightInLbs === '') {
+          if (!weightInLbs) {
             weightInLbs = 0
-          }
-          if (heightInInches === '') {
-            heightInInches = 0
-          }
-          if (heightInFeet === '') {
-            heightInFeet = 0
           }
           const weightFactor = Number(weightInLbs)
           const feetToInches = convert(heightInFeet).from('ft').to('in')
