@@ -132,7 +132,7 @@ class DisplayResults extends React.Component {
       if (!isFinite(bmiFn) || isNaN(bmiFn)) {
         return <span style={{ fontSize: '1.5rem' }}>Invalid values</span>
       }
-      if (bmiFn < 18.5) {
+      if (bmiFn < 18.5 && bmiFn > 0) {
         return 'Underweight! A healthy BMI is between 18.5 and 25.'
       }
       if (bmiFn >= 18.5 && bmiFn <= 25) {
