@@ -28,6 +28,8 @@ class DisplayInputs extends React.Component {
   }
 
   render() {
+    const IS_NEGATIVE_VALUE = (value) => String(Math.sign(value)).includes('-')
+
     const setGender = (e) => {
       this.setState({
         gender: e.target.value
@@ -43,7 +45,7 @@ class DisplayInputs extends React.Component {
         this.setState({
           age: e.target.value
         })
-      } else if (e.target.value < 0) {
+      } else if (IS_NEGATIVE_VALUE(e.target.value)) {
         e.target.value = 0
         this.setState({
           age: e.target.value
@@ -58,6 +60,9 @@ class DisplayInputs extends React.Component {
     const setHeightInCm = (e) => {
       const MAX_LENGTH_FOR_CM = 3
       if (e.target.value.length > MAX_LENGTH_FOR_CM) {
+        return
+      }
+      if (IS_NEGATIVE_VALUE(e.target.value)) {
         return
       }
       const cmToinches = convert(e.target.value).from('cm').to('in')
@@ -79,7 +84,7 @@ class DisplayInputs extends React.Component {
       }
       if (e.target.value >= 9) {
         e.target.value = 9
-      } else if (e.target.value < 0 || e.target.value.length === 0) {
+      } else if (IS_NEGATIVE_VALUE(e.target.value) || e.target.value.length === 0) {
         e.target.value = 0
         this.setState({
           heightInFeet: '',
@@ -104,7 +109,7 @@ class DisplayInputs extends React.Component {
       }
       if (e.target.value > 11) {
         e.target.value = 11
-      } else if (e.target.value < 0 || e.target.value.length === 0) {
+      } else if (IS_NEGATIVE_VALUE(e.target.value) || e.target.value.length === 0) {
         e.target.value = 0
         this.setState({
           heightInInches: '',
@@ -121,6 +126,9 @@ class DisplayInputs extends React.Component {
     const setWeightInKg = (e) => {
       const MAX_LENGTH_FOR_KG = 3
       if (e.target.value.length > MAX_LENGTH_FOR_KG) {
+        return
+      }
+      if (IS_NEGATIVE_VALUE(e.target.value)) {
         return
       }
       this.setState({
