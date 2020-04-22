@@ -142,6 +142,9 @@ class DisplayInputs extends React.Component {
       if (e.target.value.length > MAX_LENGTH_FOR_LBS) {
         return
       }
+      if (IS_NEGATIVE_VALUE(e.target.value)) {
+        return
+      }
       this.setState({
         weightInLbs: e.target.value,
         weightInKg: convert(e.target.value).from('lb').to('kg').toFixed(0)
